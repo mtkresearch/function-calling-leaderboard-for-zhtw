@@ -2,22 +2,21 @@ from model_handler.handler import BaseHandler
 from model_handler.model_style import ModelStyle
 from model_handler.utils import (
     ast_parse,
-    system_prompt_pre_processing,
-    func_doc_language_specific_pre_processing,
+    augment_prompt_by_languge,
+    language_specific_pre_processing,
 )
-from model_handler.constant import DEFAULT_SYSTEM_PROMPT
 import requests, json, re, time
 
 
 class GorillaHandler(BaseHandler):
-    def __init__(self, model_name, temperature=0.001, top_p=1, max_tokens=1000) -> None:
+    def __init__(self, model_name, temperature=0.7, top_p=1, max_tokens=1000) -> None:
         super().__init__(model_name, temperature, top_p, max_tokens)
         self.model_style = ModelStyle.Gorilla
 
     def _get_gorilla_response(self, prompt, functions):
         requestData = {
             "model": self.model_name,
-            "messages": prompt,
+            "messages": [{"role": "user", "content": prompt}],
             "functions": functions,
             "temperature": self.temperature,
             "top_p": self.top_p,
@@ -43,11 +42,17 @@ class GorillaHandler(BaseHandler):
         return directCode, metadata
 
     def inference(self, prompt, functions, test_category):
-        prompt = system_prompt_pre_processing(prompt, DEFAULT_SYSTEM_PROMPT)
-        functions = func_doc_language_specific_pre_processing(functions, test_category)
-
-        result, metadata = self._get_gorilla_response(prompt, functions)
-
+        prompt = augment_prompt_by_languge(prompt, test_category)
+        functions = language_specific_pre_processing(functions, test_category)
+        if type(functions) is not list:
+            functions = [functions]
+        try:
+            result, metadata = self._get_gorilla_response(prompt, functions)
+        except KeyboardInterrupt:
+            raise KeyboardInterrupt
+        except:
+            result = "Error"
+            metadata = {"input_tokens": 0, "output_tokens": 0, "latency": 0}
         return result, metadata
 
     def decode_ast(self, result, language="Python"):

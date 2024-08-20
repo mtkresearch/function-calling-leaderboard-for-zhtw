@@ -3,35 +3,42 @@ from model_handler.model_style import ModelStyle
 from model_handler.utils import (
     convert_to_tool,
     convert_to_function_call,
-    system_prompt_pre_processing,
-    user_prompt_pre_processing_chat_model,
-    func_doc_language_specific_pre_processing,
+    augment_prompt_by_languge,
+    language_specific_pre_processing,
     ast_parse,
 )
 from model_handler.constant import (
     GORILLA_TO_OPENAPI,
+    GORILLA_TO_PYTHON,
     USER_PROMPT_FOR_CHAT_MODEL,
-    DEFAULT_SYSTEM_PROMPT,
+    SYSTEM_PROMPT_FOR_CHAT_MODEL,
 )
 from openai import OpenAI
 import os, time, json
 
 
 class OpenAIHandler(BaseHandler):
-    def __init__(self, model_name, temperature=0.001, top_p=1, max_tokens=1000) -> None:
+    def __init__(self, model_name, temperature=0.7, top_p=1, max_tokens=1000) -> None:
         super().__init__(model_name, temperature, top_p, max_tokens)
         self.model_style = ModelStyle.OpenAI
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    def inference(self, prompt, functions, test_category):
-        # Chatting model
+    def inference(self, prompt,functions,test_category):
         if "FC" not in self.model_name:
-            functions = func_doc_language_specific_pre_processing(functions, test_category)
-
-            prompt = system_prompt_pre_processing(prompt, DEFAULT_SYSTEM_PROMPT)
-            prompt = user_prompt_pre_processing_chat_model(prompt, USER_PROMPT_FOR_CHAT_MODEL, test_category, functions)
-            message = prompt
-            
+            prompt = augment_prompt_by_languge(prompt,test_category)
+            functions = language_specific_pre_processing(functions,test_category)
+            message = [
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT_FOR_CHAT_MODEL,
+                },
+                {
+                    "role": "user",
+                    "content": USER_PROMPT_FOR_CHAT_MODEL.format(
+                        user_prompt=prompt, functions=str(functions)
+                    ),
+                },
+            ]
             start_time = time.time()
             response = self.client.chat.completions.create(
                 messages=message,
@@ -42,11 +49,12 @@ class OpenAIHandler(BaseHandler):
             )
             latency = time.time() - start_time
             result = response.choices[0].message.content
-        # Function call model
         else:
-            functions = func_doc_language_specific_pre_processing(functions, test_category)
-
-            message = prompt
+            prompt = augment_prompt_by_languge(prompt, test_category)
+            functions = language_specific_pre_processing(functions, test_category)
+            if type(functions) is not list:
+                functions = [functions]
+            message = [{"role": "user", "content": prompt}]
             oai_tool = convert_to_tool(
                 functions, GORILLA_TO_OPENAPI, self.model_style, test_category
             )
@@ -84,14 +92,7 @@ class OpenAIHandler(BaseHandler):
     
     def decode_ast(self,result,language="Python"):
         if "FC" not in self.model_name:
-            func = result
-            if " " == func[0]:
-                func = func[1:]
-            if not func.startswith("["):
-                func = "[" + func
-            if not func.endswith("]"):
-                func = func + "]"
-            decoded_output = ast_parse(func,language)
+            decoded_output = ast_parse(result,language)
         else:
             decoded_output = []
             for invoked_function in result:
@@ -102,14 +103,7 @@ class OpenAIHandler(BaseHandler):
     
     def decode_execute(self,result):
         if "FC" not in self.model_name:
-            func = result
-            if " " == func[0]:
-                func = func[1:]
-            if not func.startswith("["):
-                func = "[" + func
-            if not func.endswith("]"):
-                func = func + "]"
-            decoded_output = ast_parse(func)
+            decoded_output = ast_parse(result)
             execution_list = []
             for function_call in decoded_output:
                 for key, value in function_call.items():

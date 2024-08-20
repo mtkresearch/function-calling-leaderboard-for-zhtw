@@ -4,6 +4,7 @@ from model_handler.java_parser import parse_java_function_call
 from model_handler.js_parser import parse_javascript_function_call
 from model_handler.constant import GORILLA_TO_OPENAPI, USE_COHERE_OPTIMIZATION
 
+
 def _cast_to_openai_type(properties, mapping, test_category):
     for key, value in properties.items():
         if "type" not in value:
@@ -61,7 +62,7 @@ def convert_to_tool(
             or model_style == ModelStyle.Mistral
             or model_style == ModelStyle.Google
             or model_style == ModelStyle.OSSMODEL
-            or model_style == ModelStyle.Anthropic
+            or model_style == ModelStyle.Anthropic_FC
             or model_style == ModelStyle.COHERE
         ):
             # OAI does not support "." in the function name so we replace it with "_". ^[a-zA-Z0-9_-]{1,64}$ is the regex for the name.
@@ -72,7 +73,7 @@ def convert_to_tool(
             item["parameters"]["properties"], mapping, test_category
         )
 
-        if model_style == ModelStyle.Anthropic:
+        if model_style == ModelStyle.Anthropic_FC:
             item["input_schema"] = item["parameters"]
             del item["parameters"]
         if model_style == ModelStyle.Google:
@@ -158,7 +159,7 @@ def convert_to_tool(
                         params["description"] += " Dictionary properties: " + str(params["properties"])
                         del params["properties"]
         if model_style in [
-            ModelStyle.Anthropic,
+            ModelStyle.Anthropic_Prompt,
             ModelStyle.Google,
             ModelStyle.OSSMODEL,
         ]:
@@ -228,15 +229,11 @@ def convert_value(value, type_str):
 
 def ast_parse(input_str, language="Python"):
     if language == "Python":
-        cleaned_input = input_str.strip("[]'")
-        parsed = ast.parse(cleaned_input, mode="eval")
+        parsed = ast.parse(input_str, mode="eval")
         extracted = []
-        if isinstance(parsed.body, ast.Call):
-            extracted.append(resolve_ast_call(parsed.body))
-        else:
-            for elem in parsed.body.elts:
-                assert isinstance(elem, ast.Call)
-                extracted.append(resolve_ast_call(elem))
+        for elem in parsed.body.elts:
+            assert isinstance(elem, ast.Call)
+            extracted.append(resolve_ast_by_type(elem))
         return extracted
     elif language == "Java":
         return parse_java_function_call(
@@ -311,77 +308,21 @@ def resolve_ast_by_type(value):
     return output
 
 
-def system_prompt_pre_processing(prompts, system_prompt_template):
-    assert type(prompts) == list
-
-    system_prompt = system_prompt_template
-
-    # System prompt must be in the first position
-    # If the question comes with a system prompt, append its content at the end of the chat template.
-    if prompts[0]["role"] == "system":
-        prompts[0]["content"] = system_prompt + "\n\n" + prompts[0]["content"]
-    # Otherwise, use the system prompt template to create a new system prompt.
-    else:
-        prompts.insert(
-            0,
-            {"role": "system", "content": system_prompt},
-        )
-    return prompts
-
-
-def user_prompt_pre_processing_chat_model(
-    prompts, user_prompt_template, test_category, func_doc
-):
-    assert type(prompts) == list
-
-    prompts.append(
-        {
-            "role": "user",
-            "content": user_prompt_template.format(
-                functions=json.dumps(func_doc, indent=4),
-                language_specific_hint=_get_language_specific_hint(test_category),
-            ),
-        }
-    )
-    return prompts
-
-
-def convert_system_prompt_into_user_prompt(prompts):
-    # Some FC models doesn't support system prompt in the message field, so we turn it into user prompt
-    for prompt in prompts:
-        if prompt["role"] == "system":
-            prompt["role"] = "user"
-    return prompts
-
-
-def combine_consecutive_user_prompr(prompts):
-    # Some models require the prompt to be alternating between user and assistant.
-    # We combine consecutive user prompts into a single user prompt.
-    
-    combined_prompts = []
-    for prompt in prompts:
-        if prompt["role"] == "user" and combined_prompts and combined_prompts[-1]["role"] == "user":
-            combined_prompts[-1]["content"] += "\n\n" + prompt["content"]
-        else:
-            combined_prompts.append(prompt)
-            
-    return combined_prompts
-
-
-def _get_language_specific_hint(test_category):
+def augment_prompt_by_languge(prompt, test_category):
     if test_category == "java":
-        return "Note that the provided function is in Java 8 SDK syntax."
+        prompt = prompt + "\n Note that the provided function is in Java 8 SDK syntax."
     elif test_category == "javascript":
-        return "Note that the provided function is in JavaScript syntax."
+        prompt = prompt + "\n Note that the provided function is in JavaScript syntax."
     else:
-        return "Note that the provided function is in Python 3 syntax."
+        prompt = prompt + "\n Note that the provided function is in Python 3 syntax."
+    return prompt
 
 
-def func_doc_language_specific_pre_processing(function, test_category):
+def language_specific_pre_processing(function, test_category):
+    if type(function) is dict:
+        function = [function]
     if len(function) == 0:
        return function
-
-    assert type(function) == list
     for item in function:
         properties = item["parameters"]["properties"]
         if test_category == "java":
