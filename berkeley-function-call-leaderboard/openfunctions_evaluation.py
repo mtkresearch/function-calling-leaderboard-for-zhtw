@@ -12,7 +12,7 @@ def get_args():
     parser.add_argument("--model", type=str, default="gorilla-openfunctions-v2", nargs="+")
     # Refer to test_categories for supported categories.
     parser.add_argument("--test-category", type=str, default="all", nargs="+")
-
+    parser.add_argument("--language", type=str, default="en", help="Specify the language for the test cases and results")
     # Parameters for the model that you want to test.
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--top-p", type=float, default=1)
@@ -66,19 +66,19 @@ def collect_test_cases(test_filename_total, model_name):
     test_cases_total = []
     for file_to_open in test_filename_total:
         test_cases = []
-        with open("./data/" + file_to_open) as f:
+        with open("./data/{language}/" + file_to_open) as f:
             for line in f:
                 test_cases.append(json.loads(line))
 
         num_existing_result = 0  # if the result file already exists, skip the test cases that have been tested.
         if os.path.exists(
-            "./result/"
+            "./result/{language}/"
             + model_name.replace("/", "_")
             + "/"
             + file_to_open.replace(".json", "_result.json")
         ):
             with open(
-                "./result/"
+                "./result/{language}/"
                 + model_name.replace("/", "_")
                 + "/"
                 + file_to_open.replace(".json", "_result.json")
@@ -169,6 +169,8 @@ if __name__ == "__main__":
         if USE_COHERE_OPTIMIZATION and "command-r-plus" in model_name:
             model_name = model_name + "-optimized"
         
+        os.makedirs(f"./data/{args.language}", exist_ok=True)
+        os.makedirs(f"./result/{args.language}/{model_name.replace('/', '_')}", exist_ok=True)
         test_cases_total = collect_test_cases(test_filename_total, model_name)
         
         if len(test_cases_total) == 0:
