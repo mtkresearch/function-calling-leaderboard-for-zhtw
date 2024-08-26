@@ -69,13 +69,18 @@ If decided to run OSS model, the generation script uses vllm and therefore requi
 Use the following command for LLM inference of the evaluation dataset with specific models
 
 ```bash
-python openfunctions_evaluation.py --model MODEL_NAME --test-category TEST_CATEGORY
+python openfunctions_evaluation.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
 ```
 
-For available options for `MODEL_NAME` and `TEST_CATEGORY`, please refer to the [Models Available](#models-available) and [Available Test Category](#available-test-category) section below.
+For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the MODEL_NAME: Refer to the `model_handler/handler_map.py` file for a list of supported models., and [Available Test Category](#available-test-category) section below.
 
-If no `MODEL_NAME` is provided, the model `gorilla-openfunctions-v2` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default.
+If no `MODEL_NAME` is provided, the model `gorilla-openfunctions-v2` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default. If no `LANGUAGE` is provided, `en` will be used by default.
 
+### Available Languages
+The following languages are currently supported for evaluation:
+
+- `en`: English (default)
+- `zhtw`: Traditional Chinese
 
 ### Available Test Category
 In the following two sections, the optional `--test-category` parameter can be used to specify the category of tests to run. You can specify multiple categories separated by spaces. Available options include:
