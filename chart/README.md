@@ -1,31 +1,28 @@
-# berkeley-function-call-leaderboard-for-zhtw 
-# Introduction
-As the adoption of Large Language Models (LLMs) grows, evaluating their task-performing abilities—such as real-time information retrieval and external API call execution—becomes increasingly important. LLM performance varies significantly based on the language used, the number of functions called, and the specific user prompts. To address this variability, we propose a robust function-calling benchmark tailored to selected languages and diverse test data formats, ensuring consistent and reliable performance assessment across different use cases.
+# Berkeley Function Calling Leaderboard (BFCL)
 
-# Background
-Research has highlighted a significant performance gap between high-resource languages, like English, and low-resource languages, such as Traditional Chinese, in multilingual models. English dominates the pre-training corpus, making up 89.7%, while Chinese(Traditional and Simplfied) constitutes only 0.13%. Even with fine-tuning, Chinese models perform worse than their English counterparts, particularly in the Traditional context, where only 20% is in Traditional Chinese. This results in inaccuracies and underscores the need for culturally and linguistically aligned datasets.
+💡 Read more in our [Gorilla OpenFunctions Leaderboard Blog](https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html)
 
-To address these issues in evaluating function-calling performance in Traditional Chinese, Gorilla's benchmarking method was chosen for its advantages. Gorilla offers automated API generation and invocation, supporting over 1,000 different APIs with a 95% accuracy rate. It enhances efficiency by saving development time and reducing error risks, making it a robust choice for improving the accuracy and relevance of language models in specific cultural contexts.
+🦍 Berkeley Function Calling Leaderboard live [Berkeley Function Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html#leaderboard)
 
+🦍 Berkeley Function Calling Leaderboard on Hugginface [Berkeley Function Calling Leaderboard Huggingface](https://huggingface.co/spaces/gorilla-llm/berkeley-function-calling-leaderboard)
 
-Berkeley Function Call Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/original-repo-link), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
-# New Features
-<b>Language Configuration</b> and <b>Radar Chart Drawing</b> are the two features we have introduced to enhance the benchmarking process. These enhancements not only broaden the applicability of the benchmark but also improve the usability and depth of analysis for researchers and developers working with large language models.
-## Language Configuration
-This feature allows users to switch between languages via the command line, making the tool more accessible and flexible for multilingual users. By integrating datasets in various languages, users can compare the performance of large language models across different linguistic contexts, offering valuable insights for multilingual language model development.
-These enhancements not only broaden the applicability of the benchmark but also improve the usability and depth of analysis for researchers and developers working with large language models.
+## Introduction
+We introduce the Berkeley Function Leaderboard (BFCL), the **first comprehensive and executable function call evaluation dedicated to assessing Large Language Models' (LLMs) ability to invoke functions**. Unlike previous function call evaluations, BFCL accounts for various forms of function calls, diverse function calling scenarios, and their executability. Additionally, we release Gorilla-Openfunctions-v2, the most advanced open-source model to date capable of handling multiple languages, parallel function calls, and multiple function calls simultaneously. A unique debugging feature of this model is its ability to output an "Error Message" when the provided function does not suit your task.
 
-## Benchmark
+Read more about the technical details and interesting insights in our [blog post](https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html)!
 
+![image](./architecture_diagram.png)
 ### Install Dependencies
 
 ```bash
 conda create -n BFCL python=3.10
 conda activate BFCL
-pip install -r requirements.txt
-pip install vllm==0.5.0 # For vLLM supported GPUs
+pip install -r requirements.txt # Inside gorilla/berkeley-function-call-leaderboard
+pip install vllm==0.5.0 # If you have vLLM supported GPU(s) and want to run our evaluation data against self-hosted OSS models.
 ```
-### Execution Evaluation Data Post-processing (Can be Skipped: Necesary for Executable Test Categories)
+
+
+## Execution Evaluation Data Post-processing (Can be Skipped: Necesary for Executable Test Categories)
 Add your keys into `function_credential_config.json`, so that the original placeholder values in questions, params, and answers will be reset.
 
 To run the executable test categories, there are 4 API keys to include:
@@ -46,9 +43,12 @@ To run the executable test categories, there are 4 API keys to include:
 
 The `apply_function_credential_config.py` will automatically search for dataset files in the default `./data/` directory and replace the placeholder values with the actual API keys.
 
+```bash
+python apply_function_credential_config.py
+```
 
 
-### Evaluating different models on the BFCL
+## Evaluating different models on the BFCL
 
 Make sure the model API keys are included in your environment variables. Running proprietary models like GPTs, Claude, Mistral-X will require them.
 
@@ -109,34 +109,46 @@ In the following two sections, the optional `--test-category` parameter can be u
 > By setting the `--api-sanity-check` flag, or `-c` for short, if the test categories include `executable`, the evaluation process will perform the REST API sanity check first to ensure that all the API endpoints involved during the execution evaluation process are working properly. If any of them are not behaving as expected, we will flag those in the console and continue execution.
 
 
-### Evaluating the LLM generations
+## Evaluating the LLM generations
 
-#### Running the Checker
+### Running the Checker
 
-Navigate to the `eval_checker` directory and run the `eval_runner.py` script with the desired parameters. The basic syntax is as follows:
+Navigate to the `gorilla/berkeley-function-call-leaderboard/eval_checker` directory and run the `eval_runner.py` script with the desired parameters. The basic syntax is as follows:
 
 ```bash
 python eval_runner.py --model MODEL_NAME --test-category {TEST_CATEGORY,all,ast,executable,python,non-python}
 ```
 
+For available options for `MODEL_NAME` and `TEST_CATEGORY`, please refer to the [Models Available](#models-available) and [Available Test Category](#available-test-category) section.
 
-## Radar Chart
-Inspired by Berkeley Function-Calling Leaderboard's interactive wagon wheel tool, we have created a charting feature, aiming to help users create visualization of the benchmark outcomes and better understand the performance by the models. This visualization tool helps users easily understand and compare the performance of different models, providing a clear, graphical representation of their strengths and weaknesses. This chart is organized into nine categories: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
-### Install Dependencies
+If no `MODEL_NAME` is provided, all available model results will be evaluated by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default.
+
+### Example Usage
+
+If you want to run all tests for the `gorilla-openfunctions-v2` model, you can use the following command:
+
 ```bash
-pip install -r requirements.txt # path可能還不確定看到時候requirements.txt要放root還是folder
+python eval_runner.py --model gorilla-openfunctions-v2
 ```
-### Usage
-- Input: Each model should have exactly 9 scores enclosed in a list and in the following order: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
-- Recommendation: For readability, it is recommended to limit the number of models to 4, but more can be plotted if desired.
-- Output: `radar_chart.png` will be created and saved in the current directory.
 
-- Example usage
+If you want to evaluate all offline tests (do not require RapidAPI keys) for OpenAI GPT-3.5, you can use the following command:
+
 ```bash
-python chart.py "[10, 20, 30, 40, 50, 60, 70, 80, 90]" "[20, 30, 40, 50, 60, 70, 80, 90, 100]" "[30, 40, 50, 60, 70, 80, 90, 100, 110]"
+python eval_runner.py --model gpt-3.5-turbo-0125 --test-category ast
 ```
-![image](./radar_chart.png)
 
-## Contributing and lisence
+If you want to run `rest` tests for a few Claude models, you can use the following command:
 
+```bash
+python eval_runner.py --model claude-3-5-sonnet-20240620 claude-3-opus-20240229 claude-3-sonnet-20240229 --test-category rest
+```
 
+If you want to run `rest` and `javascript` tests for a few models and `gorilla-openfunctions-v2`, you can use the following command:
+
+```bash
+python eval_runner.py --model gorilla-openfunctions-v2 claude-3-5-sonnet-20240620 gpt-4-0125-preview gemini-1.5-pro-preview-0514 --test-category rest javascript
+```
+
+### Model-Specific Optimization
+
+Some companies have proposed some optimization strategies in their models' handler, which we (BFCL) think is unfair to other models, as those optimizations are not generalizable to all models. Therefore, we have disabled those optimizations during the evaluation process by default. You can enable those optimizations by setting the `USE_{COMPANY}_OPTIMIZATION` flag to `True` in the `model_handler/constants.py` file.
