@@ -72,7 +72,7 @@ Use the following command for LLM inference of the evaluation dataset with speci
 python openfunctions_evaluation.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
 ```
 
-For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the MODEL_NAME: Refer to the `model_handler/handler_map.py` file for a list of supported models., and [Available Test Category](#available-test-category) section below.
+For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the the `model_handler/handler_map.py` file for a list of supported models, [Available Languages](#aAvailable Languages) section below and [Available Test Category](#available-test-category) section below.
 
 If no `MODEL_NAME` is provided, the model `gorilla-openfunctions-v2` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default. If no `LANGUAGE` is provided, `en` will be used by default.
 
