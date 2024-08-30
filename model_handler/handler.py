@@ -24,16 +24,16 @@ class BaseHandler:
         # This method takes raw model output and convert it to standard execute checker input.
         pass
 
-    def write(self, result):
+    def write(self, result, language):
         model_name_dir = self.model_name.replace("/", "_")
-        os.makedirs(f"./result/{model_name_dir}", exist_ok=True)
+        os.makedirs(f"./result/{language}/{model_name_dir}", exist_ok=True)
         
         if type(result) is dict:
             result = [result]
             
         for entry in result:
             test_category = entry["id"].rsplit("_", 1)[0]
-            file_to_write = f"./result/{model_name_dir}/gorilla_openfunctions_v1_test_{test_category}_result.json"
+            file_to_write = f"./result/{language}/{model_name_dir}/gorilla_openfunctions_v1_test_{test_category}_result.json"
             
             with open(file_to_write, "a+") as f:
                 f.write(json.dumps(entry) + "\n")

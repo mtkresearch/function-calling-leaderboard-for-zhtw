@@ -417,10 +417,7 @@ def runner(model_names, test_categories, api_sanity_check):
     print(f"🏁 Evaluation completed. See {os.path.abspath(OUTPUT_PATH + 'data.csv')} for evaluation results.")
 
 
-INPUT_PATH = "../result/"
-PROMPT_PATH = "../data/"
-POSSIBLE_ANSWER_PATH = "../data/possible_answer/"
-OUTPUT_PATH = "../score/"
+
 
 # A dictionary to store the results
 # Key is model name, value is a dictionary with keys as test category and values as a dictionary with accuracy and total count
@@ -447,9 +444,13 @@ if __name__ == "__main__":
         default=False,  # Default value is False, meaning the sanity check is skipped unless the flag is specified
         help="Perform the REST API status sanity check before running the evaluation. By default, the sanity check is skipped.",
     )
+    parser.add_argument("--language", type=str, default="en", help="Specify the language for the test cases and results")
 
     args = parser.parse_args()
-
+    INPUT_PATH = f"../result/{args.language}/"
+    PROMPT_PATH = f"../data/{args.language}/"
+    POSSIBLE_ANSWER_PATH = "../data/possible_answer/"
+    OUTPUT_PATH = f"../score/{args.language}/"
     api_sanity_check = args.api_sanity_check
     test_categories = None
     if args.test_category is not None:

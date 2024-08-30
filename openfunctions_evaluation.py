@@ -105,7 +105,7 @@ def generate_results(args, model_name, test_cases_total):
         )
         for test_case, res in zip(test_cases_total, result):
             result_to_write = {"id": test_case["id"], "result": res}
-            handler.write(result_to_write)
+            handler.write(result_to_write,args.language)
 
     else:
         for test_case in tqdm(test_cases_total):
@@ -150,7 +150,7 @@ def generate_results(args, model_name, test_cases_total):
                 "output_token_count": metadata["output_tokens"],
                 "latency": metadata["latency"],
             }
-            handler.write(result_to_write)
+            handler.write(result_to_write,args.language)
 
 
 if __name__ == "__main__":
