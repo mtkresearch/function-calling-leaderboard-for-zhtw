@@ -23,7 +23,7 @@ These enhancements not only broaden the applicability of the benchmark but also 
 # conda create -n BFCL python=3.10
 # conda activate BFCL
 pip install -r requirements.txt
-pip install vllm==0.5.0 # For vLLM supported GPUs
+pip install vllm==0.4.3 # For vLLM supported GPUs
 ```
 ### Execution Evaluation Data Post-processing (Can be Skipped: Necesary for Executable Test Categories)
 Add your keys into `function_credential_config.json`, so that the original placeholder values in questions, params, and answers will be reset.
