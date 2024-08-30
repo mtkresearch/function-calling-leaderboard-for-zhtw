@@ -20,8 +20,8 @@ These enhancements not only broaden the applicability of the benchmark but also 
 ### Install Dependencies
 
 ```bash
-# conda create -n BFCL python=3.10
-# conda activate BFCL
+conda create -n BFCL python=3.10
+conda activate BFCL
 pip install -r requirements.txt
 pip install vllm==0.4.3 # For vLLM supported GPUs
 ```
@@ -127,10 +127,7 @@ python eval_runner.py --model MODEL_NAME --test-category {TEST_CATEGORY,all,ast,
 
 ## Radar Chart
 Inspired by Berkeley Function-Calling Leaderboard's interactive wagon wheel tool, we have created a charting feature, aiming to help users create visualization of the benchmark outcomes and better understand the performance by the models. This visualization tool helps users easily understand and compare the performance of different models, providing a clear, graphical representation of their strengths and weaknesses. This chart is organized into nine categories: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
-### Install Dependencies
-```bash
-pip install -r requirements.txt # path可能還不確定看到時候requirements.txt要放root還是folder
-```
+
 ### Usage
 - Input: Each model should have exactly 9 scores enclosed in a list and in the following order: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
 - Recommendation: For readability, it is recommended to limit the number of models to 4, but more can be plotted if desired.
@@ -140,7 +137,7 @@ pip install -r requirements.txt # path可能還不確定看到時候requirements
 ```bash
 python chart.py "[10, 20, 30, 40, 50, 60, 70, 80, 90]" "[20, 30, 40, 50, 60, 70, 80, 90, 100]" "[30, 40, 50, 60, 70, 80, 90, 100, 110]"
 ```
-![image](./radar_chart.png)
+![image](./chart/radar_chart.png)
 
 ## Contributing and lisence
 
