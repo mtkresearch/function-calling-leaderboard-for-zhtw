@@ -66,19 +66,19 @@ def collect_test_cases(test_filename_total, model_name):
     test_cases_total = []
     for file_to_open in test_filename_total:
         test_cases = []
-        with open("./data/{language}/" + file_to_open) as f:
+        with open(f"./data/{args.language}/" + file_to_open) as f:
             for line in f:
                 test_cases.append(json.loads(line))
 
         num_existing_result = 0  # if the result file already exists, skip the test cases that have been tested.
         if os.path.exists(
-            "./result/{language}/"
+            f"./result/{args.language}/"
             + model_name.replace("/", "_")
             + "/"
             + file_to_open.replace(".json", "_result.json")
         ):
             with open(
-                "./result/{language}/"
+                f"./result/{args.language}/"
                 + model_name.replace("/", "_")
                 + "/"
                 + file_to_open.replace(".json", "_result.json")
