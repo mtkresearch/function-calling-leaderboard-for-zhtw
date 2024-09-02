@@ -1,7 +1,6 @@
 from model_handler.model_style import ModelStyle
 import json, os
 
-
 class BaseHandler:
     model_name: str
     model_style: ModelStyle
@@ -36,4 +35,4 @@ class BaseHandler:
             file_to_write = f"./result/{language}/{model_name_dir}/gorilla_openfunctions_v1_test_{test_category}_result.json"
             
             with open(file_to_write, "a+") as f:
-                f.write(json.dumps(entry) + "\n")
+                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
