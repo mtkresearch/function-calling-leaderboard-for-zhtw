@@ -1,5 +1,6 @@
 import sys
 import os
+import io
 sys.path.append("../")
 
 from checker import ast_checker, exec_checker, executable_checker_rest
@@ -8,6 +9,11 @@ from eval_runner_helper import *
 from eval_checker_constant import TEST_COLLECTION_MAPPING
 from tqdm import tqdm
 import argparse
+
+# Set UTF-8 encoding for standard input, output, and error
+sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
 # NOTE: This file should be run in the `eval_checker` directory
