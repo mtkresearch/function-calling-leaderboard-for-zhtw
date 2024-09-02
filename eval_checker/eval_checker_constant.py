@@ -13,7 +13,6 @@ TEST_COLLECTION_MAPPING = {
         "executable_multiple_function",
         "executable_parallel_function",
         "executable_parallel_multiple_function",
-        "rest",
     ],
     "all": [
         "simple",
