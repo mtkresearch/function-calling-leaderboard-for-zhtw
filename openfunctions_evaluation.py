@@ -34,6 +34,7 @@ TEST_FILE_MAPPING = {
     "parallel_function": "gorilla_openfunctions_v1_test_parallel_function.json",
     "multiple_function": "gorilla_openfunctions_v1_test_multiple_function.json",
     "parallel_multiple_function": "gorilla_openfunctions_v1_test_parallel_multiple_function.json",
+    "rest": "gorilla_openfunctions_v1_test_rest.json",
 }
 
 
