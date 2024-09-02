@@ -4,7 +4,6 @@ from model_handler.handler_map import handler_map
 from model_handler.model_style import ModelStyle
 from model_handler.constant import USE_COHERE_OPTIMIZATION
 from eval_checker.eval_checker_constant import TEST_COLLECTION_MAPPING
-os.environ['PYTHONUTF8'] = '1'
 
 def get_args():
     parser = argparse.ArgumentParser()

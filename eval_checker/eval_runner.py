@@ -1,6 +1,5 @@
 import sys
 import os
-os.environ['PYTHONUTF8'] = '1'
 sys.path.append("../")
 
 from checker import ast_checker, exec_checker, executable_checker_rest
