@@ -614,7 +614,7 @@ def write_list_of_dicts_to_file(filename, data, subdir=None):
     # Write the list of dictionaries to the file in JSON format
     with open(filename, "w", encoding='utf-8') as f:
         for i, entry in enumerate(data):
-            json_str = json.dumps(entry)
+            json_str = json.dumps(entry, ensure_ascii=False, indent=4)
             f.write(json_str)
             if i < len(data) - 1:
                 f.write("\n")

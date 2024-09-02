@@ -8,16 +8,14 @@ Research has highlighted a significant performance gap between high-resource lan
 To address these issues in evaluating function-calling performance in Traditional Chinese, Gorilla's benchmarking method was chosen for its advantages. Gorilla offers automated API generation and invocation, supporting over 1,000 different APIs with a 95% accuracy rate. It enhances efficiency by saving development time and reducing error risks, making it a robust choice for improving the accuracy and relevance of language models in specific cultural contexts.
 
 
-Berkeley Function Call Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/original-repo-link), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
+Berkeley Function Call Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/ShishirPatil/gorilla), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
 # New Features
 <b>Language Configuration</b> and <b>Radar Chart Drawing</b> are the two features we have introduced to enhance the benchmarking process. These enhancements not only broaden the applicability of the benchmark but also improve the usability and depth of analysis for researchers and developers working with large language models.
 ## Language Configuration
 This feature allows users to switch between languages via the command line, making the tool more accessible and flexible for multilingual users. By integrating datasets in various languages, users can compare the performance of large language models across different linguistic contexts, offering valuable insights for multilingual language model development.
 These enhancements not only broaden the applicability of the benchmark but also improve the usability and depth of analysis for researchers and developers working with large language models.
 
-## Benchmark
-
-### Install Dependencies
+## Install Dependencies
 
 ```bash
 conda create -n BFCL python=3.10
@@ -25,6 +23,9 @@ conda activate BFCL
 pip install -r requirements.txt
 pip install vllm==0.4.3 # For vLLM supported GPUs
 ```
+
+## Benchmark
+
 ### Execution Evaluation Data Post-processing (Can be Skipped: Necesary for Executable Test Categories)
 Add your keys into `function_credential_config.json`, so that the original placeholder values in questions, params, and answers will be reset.
 
@@ -72,26 +73,23 @@ Use the following command for LLM inference of the evaluation dataset with speci
 python openfunctions_evaluation.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
 ```
 
-For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the the `model_handler/handler_map.py` file for a list of supported models, [Available Languages](#aAvailable Languages) section below and [Available Test Category](#available-test-category) section below.
+For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the the `model_handler/handler_map.py` file for a list of supported models, [Available Languages](#available-languages) section below and [Available Test Category](#available-test-category) section below.
 
 If no `MODEL_NAME` is provided, the model `gorilla-openfunctions-v2` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default. If no `LANGUAGE` is provided, `en` will be used by default.
 
 ### Available Languages
-The following languages are currently supported for evaluation:
+The following languages are currently supported for the benchmark:
 
 - `en`: English (default)
 - `zhtw`: Traditional Chinese
 
 ### Available Test Category
-In the following two sections, the optional `--test-category` parameter can be used to specify the category of tests to run. You can specify multiple categories separated by spaces. Available options include:
+In the following two sections, the optional `--test-category` parameter can be used to specify the category of tests to run. You can specify multiple categories separated by spaces. Available options include all the test categories appearing on the wagon wheel by Berkeley Function-Calling Leaderboard's:
 
-- `all`: Run all test categories.
+- `all`: Run all test categories listed under the individual test categories (9 in total).
     - This is the default option if no test category is provided.
-- `ast`: Abstract Syntax Tree tests.
-- `executable`: Executable code evaluation tests.
-- `python`: Tests specific to Python code.
-- `non-python`: Tests for code in languages other than Python, such as Java and JavaScript.
-- `python-ast`: Python Abstract Syntax Tree tests.
+- `ast`: Abstract Syntax Tree tests, including simple, parallel_function, multiple_function, parallel_multiple_function, and relevance
+- `executable`: Executable code evaluation tests, including executable_simple, executable_parallel_function, executable_multiple_function, and executable_parallel_multiple_function
 - Individual test categories:
     - `simple`: Simple function calls.
     - `parallel_function`: Multiple function calls in parallel.
@@ -101,17 +99,23 @@ In the following two sections, the optional `--test-category` parameter can be u
     - `executable_parallel_function`: Executable multiple function calls in parallel.
     - `executable_multiple_function`: Executable multiple function calls in sequence.
     - `executable_parallel_multiple_function`: Executable multiple function calls in parallel and in sequence.
-    - `java`: Java function calls.
-    - `javascript`: JavaScript function calls.
-    - `rest`: REST API function calls.
     - `relevance`: Function calls with irrelevant function documentation.
 - If no test category is provided, the script will run all available test categories. (same as `all`)
 
-> If you want to run the `all` or `executable` or `python` category, make sure to register your REST API keys in `function_credential_config.json`. This is because Gorilla Openfunctions Leaderboard wants to test model's generated output on real world API!
-
-> If you do not wish to provide API keys for REST API testing, set `test-category` to `ast` or any non-executable category.
-
 > By setting the `--api-sanity-check` flag, or `-c` for short, if the test categories include `executable`, the evaluation process will perform the REST API sanity check first to ensure that all the API endpoints involved during the execution evaluation process are working properly. If any of them are not behaving as expected, we will flag those in the console and continue execution.
+
+### Dataset Composition
+| #   | Category                   |
+| --- | -------------------------- |
+| 100 | Simple (Exec)              |
+| 50  | Multiple (Exec)            |
+| 50  | Parallel (Exec)            |
+| 40  | Parallel & Multiple (Exec) |
+| 400 | Simple (AST)               |
+| 200 | Multiple (AST)             |
+| 200 | Parallel (AST)             |
+| 200 | Parallel & Multiple (AST)  |
+| 240 | Relevance                  |
 
 
 ### Evaluating the LLM generations
@@ -121,9 +125,8 @@ In the following two sections, the optional `--test-category` parameter can be u
 Navigate to the `eval_checker` directory and run the `eval_runner.py` script with the desired parameters. The basic syntax is as follows:
 
 ```bash
-python eval_runner.py --model MODEL_NAME --test-category {TEST_CATEGORY,all,ast,executable,python,non-python}
+python eval_runner.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
 ```
-
 
 ## Radar Chart
 Inspired by Berkeley Function-Calling Leaderboard's interactive wagon wheel tool, we have created a charting feature, aiming to help users create visualization of the benchmark outcomes and better understand the performance by the models. This visualization tool helps users easily understand and compare the performance of different models, providing a clear, graphical representation of their strengths and weaknesses. This chart is organized into nine categories: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
