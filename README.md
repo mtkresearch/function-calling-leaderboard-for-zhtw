@@ -142,6 +142,6 @@ python chart.py "[10, 20, 30, 40, 50, 60, 70, 80, 90]" "[20, 30, 40, 50, 60, 70,
 ```
 ![image](./chart/radar_chart.png)
 
-## Contributing and lisence
+## Contributor and License
 
 
