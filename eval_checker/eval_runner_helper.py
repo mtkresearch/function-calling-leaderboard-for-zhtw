@@ -592,7 +592,7 @@ def is_sql(test_category):
 
 def load_file(file_path):
     result = []
-    with open(file_path, encoding='utf-8') as f:
+    with open(file_path) as f:
         file = f.readlines()
         for line in file:
             result.append(json.loads(line))
@@ -612,9 +612,9 @@ def write_list_of_dicts_to_file(filename, data, subdir=None):
         filename = os.path.join(subdir, filename)
 
     # Write the list of dictionaries to the file in JSON format
-    with open(filename, "w", encoding='utf-8') as f:
+    with open(filename, "w") as f:
         for i, entry in enumerate(data):
-            json_str = json.dumps(entry, ensure_ascii=False, indent=4)
+            json_str = json.dumps(entry)
             f.write(json_str)
             if i < len(data) - 1:
                 f.write("\n")

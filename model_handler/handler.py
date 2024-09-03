@@ -34,5 +34,5 @@ class BaseHandler:
             test_category = entry["id"].rsplit("_", 1)[0]
             file_to_write = f"./result/{language}/{model_name_dir}/gorilla_openfunctions_v1_test_{test_category}_result.json"
             
-            with open(file_to_write, "a+", encoding='utf-8') as f:
-                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            with open(file_to_write, "a+") as f:
+                f.write(json.dumps(entry) + "\n")
