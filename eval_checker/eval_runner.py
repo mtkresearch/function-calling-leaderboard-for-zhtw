@@ -450,7 +450,7 @@ if __name__ == "__main__":
         default=False,  # Default value is False, meaning the sanity check is skipped unless the flag is specified
         help="Perform the REST API status sanity check before running the evaluation. By default, the sanity check is skipped.",
     )
-    parser.add_argument("--language", type=str, default="en", help="Specify the language for the test cases and results")
+    parser.add_argument("--language", type=str, default="zhtw", help="Specify the language for the test cases and results")
 
     args = parser.parse_args()
     INPUT_PATH = f"{ROOT}/../result/{args.language}/"

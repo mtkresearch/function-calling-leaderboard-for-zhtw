@@ -14,10 +14,10 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 def get_args():
     parser = argparse.ArgumentParser()
     # Refer to model_choice for supported models.
-    parser.add_argument("--model", type=str, default="gorilla-openfunctions-v2", nargs="+")
+    parser.add_argument("--model", type=str, default="gpt-3.5-turbo-0125-FC", nargs="+")
     # Refer to test_categories for supported categories.
     parser.add_argument("--test-category", type=str, default="all", nargs="+")
-    parser.add_argument("--language", type=str, default="en", help="Specify the language for the test cases and results")
+    parser.add_argument("--language", type=str, default="zhtw", help="Specify the language for the test cases and results")
     # Parameters for the model that you want to test.
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--top-p", type=float, default=1)

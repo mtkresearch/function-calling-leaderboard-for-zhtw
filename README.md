@@ -76,7 +76,7 @@ python openfunctions_evaluation.py --model MODEL_NAME --test-category TEST_CATEG
 
 For available options for `MODEL_NAME`, `TEST_CATEGORY` and `LANGUAGE`, please refer to the the `model_handler/handler_map.py` file for a list of supported models, [Available Languages](#available-languages) section below and [Available Test Category](#available-test-category) section below.
 
-If no `MODEL_NAME` is provided, the model `gorilla-openfunctions-v2` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default. If no `LANGUAGE` is provided, `en` will be used by default.
+If no `MODEL_NAME` is provided, the model `gpt-3.5-turbo-0125-FC` will be used by default. If no `TEST_CATEGORY` is provided, all test categories will be run by default. If no `LANGUAGE` is provided, `zhtw` will be used by default.
 
 ### Available Languages
 The following languages are currently supported for the benchmark:
@@ -106,6 +106,7 @@ In the following two sections, the optional `--test-category` parameter can be u
 > By setting the `--api-sanity-check` flag, or `-c` for short, if the test categories include `executable`, the evaluation process will perform the REST API sanity check first to ensure that all the API endpoints involved during the execution evaluation process are working properly. If any of them are not behaving as expected, we will flag those in the console and continue execution.
 
 ### Dataset Composition
+
 | #   | Category                   |
 | --- | -------------------------- |
 | 100 | Simple (Exec)              |
@@ -136,6 +137,6 @@ The basic syntax is as follows:
 ```bash
 python analysis/chart.py --score_csv ./score/zhtw/data.csv --out_chart ./score/zhtw/radar_chart_zhtw.png
 ```
-![image](./misc/radar_chart.png)
+![image](./misc/radar_chart_all.png)
 
 ## Contributor and License
