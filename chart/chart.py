@@ -84,7 +84,6 @@ if __name__ == "__main__":
     models, model_names = [], []
     for _, row in df.iterrows():
         scores = [float(row[col].replace('%', '')) for col in cols_of_score]
-        print(scores)
         models.append(scores)
         model_names.append(row['Model'])
 
