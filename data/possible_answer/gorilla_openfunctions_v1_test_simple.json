@@ -358,7 +358,7 @@
 {"id": "simple_357", "ground_truth": {"get_recipe": {"dish_name": ["chocolate cake", "vegan chocolate cake", "純素巧克力蛋糕", "巧克力蛋糕"], "diet_preference": ["vegan", "素"]}}}
 {"id": "simple_358", "ground_truth": {"recipe_search": {"diet": [["Gluten Free"], ["GF"], ["gluten free"], ["無麩質"]], "time_limit": [30], "dish": ["cookie", "餅乾"]}}}
 {"id": "simple_359", "ground_truth": {"recipe_search": {"dietary_restriction": ["Vegetarian", "素食"], "ingredients": [["pasta", "cheese"], ["義大利麵", "乳酪"], ["義大利麵", "起司"]], "servings": [2]}}}
-{"id": "simple_360", "ground_truth": {"find_recipe": {"recipeName": ["pasta carbonara", "卡波納拉義大利麵"], "maxCalories": [500]}}}
+{"id": "simple_360", "ground_truth": {"find_recipe": {"recipeName": ["pasta carbonara", "意大利碳拌麵"], "maxCalories": [500]}}}
 {"id": "simple_361", "ground_truth": {"restaurant_finder": {"city": ["New York City", "New York City, NY", "NYC", "New York", "紐約市", "紐約"], "cuisine": ["Italian", "義大利", "義式"], "diet": ["Gluten-free", "無麩質"]}}}
 {"id": "simple_362", "ground_truth": {"get_best_sushi_places": {"city": ["Tokyo", "東京"], "top": [5], "review_rate": [4.0]}}}
 {"id": "simple_363", "ground_truth": {"find_closest": {"location": ["Boston", "Boston, MA", "麻薩諸塞州波士頓", "麻州波士頓", "波士頓"], "cuisine": ["Sushi", "sushi", "壽司"], "amenities": [["Patio"], ["露台"]]}}}

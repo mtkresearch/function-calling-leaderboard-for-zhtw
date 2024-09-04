@@ -66,8 +66,8 @@ def create_radar_chart(models, model_names, out_png):
                 dtick=10  # Set the interval to 10
             )),
         showlegend=True,
-        width=900,  # Increase the width
-        height=900  # Increase the height
+        width=1200,  # Increase the width
+        height=800  # Increase the height
     )
 
     #fig.show()
@@ -76,8 +76,8 @@ def create_radar_chart(models, model_names, out_png):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--score_csv", type=str, default="./score/en/data.csv")
-    parser.add_argument("--out_chart", type=str, default='./chart/radar_chart.png')
+    parser.add_argument("--score_csv", type=str, default="./score/zhtw/data.csv")
+    parser.add_argument("--out_chart", type=str, default='./score/zhtw/radar_chart_zhtw.png')
     args = parser.parse_args()
 
     df = pd.read_csv(args.score_csv)

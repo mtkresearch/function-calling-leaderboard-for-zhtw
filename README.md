@@ -134,7 +134,7 @@ Inspired by Berkeley Function-Calling Leaderboard's interactive wagon wheel tool
 
 The basic syntax is as follows:
 ```bash
-python chart/chart.py --score_csv ./score/zhtw/data.csv
+python analysis/chart.py --score_csv ./score/zhtw/data.csv --out_chart ./score/zhtw/radar_chart_zhtw.png
 ```
 ![image](./misc/radar_chart.png)
 

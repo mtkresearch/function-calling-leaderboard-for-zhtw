@@ -1,3 +1,6 @@
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 import json
 import math
 import requests
@@ -5,7 +8,7 @@ from custom_exception import NoAPIKeyError
 import time
 
 api_key = {}
-with open("../function_credential_config.json") as f:
+with open(f"{ROOT}/../function_credential_config.json") as f:
     data = json.loads(f.read())
     for item in data:
         for k, v in item.items():
