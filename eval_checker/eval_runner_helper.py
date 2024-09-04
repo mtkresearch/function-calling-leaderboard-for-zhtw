@@ -1,3 +1,6 @@
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 import glob
 import json
 import os
@@ -9,8 +12,8 @@ from custom_exception import BadAPIStatusError
 from model_handler.handler_map import handler_map
 from tqdm import tqdm
 
-REST_API_GROUND_TRUTH_FILE_PATH = "api_status_check_ground_truth_REST.json"
-EXECTUABLE_API_GROUND_TRUTH_FILE_PATH = "api_status_check_ground_truth_executable.json"
+REST_API_GROUND_TRUTH_FILE_PATH = f"{ROOT}/api_status_check_ground_truth_REST.json"
+EXECTUABLE_API_GROUND_TRUTH_FILE_PATH = f"{ROOT}/api_status_check_ground_truth_executable.json"
 
 COLUMNS = [
     "Rank",

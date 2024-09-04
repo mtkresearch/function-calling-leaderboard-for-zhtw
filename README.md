@@ -1,4 +1,5 @@
-# berkeley-function-call-leaderboard-for-zhtw 
+# Berkeley Function Call Leaderboard for ZHTW
+
 Berkeley Function Call Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/ShishirPatil/gorilla), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
 
 # Introduction
@@ -15,6 +16,8 @@ To address these issues in evaluating function-calling performance in Traditiona
 This feature allows users to switch between languages via the command line, making the tool more accessible and flexible for multilingual users. By integrating datasets in various languages, users can compare the performance of large language models across different linguistic contexts, offering valuable insights for multilingual language model development.
 These enhancements not only broaden the applicability of the benchmark but also improve the usability and depth of analysis for researchers and developers working with large language models.
 
+# Preliminary Preparation
+
 ## Install Dependencies
 
 ```bash
@@ -24,9 +27,7 @@ pip install -r requirements.txt
 pip install vllm==0.4.3 # For vLLM supported GPUs
 ```
 
-## Benchmark
-
-### Execution Evaluation Data Post-processing (Can be Skipped: Necesary for Executable Test Categories)
+## Execution evaluation data post-processing (can be skipped: necesary for executable test categories)
 Add your keys into `function_credential_config.json`, so that the original placeholder values in questions, params, and answers will be reset.
 
 To run the executable test categories, there are 4 API keys to include:
@@ -47,9 +48,7 @@ To run the executable test categories, there are 4 API keys to include:
 
 The `apply_function_credential_config.py` will automatically search for dataset files in the default `./data/` directory and replace the placeholder values with the actual API keys.
 
-
-
-### Evaluating different models on the BFCL
+## Evaluating different models on the BFCL
 
 Make sure the model API keys are included in your environment variables. Running proprietary models like GPTs, Claude, Mistral-X will require them.
 
@@ -63,9 +62,11 @@ export NVIDIA_API_KEY=nvapi-XXXXXX
 export YI_API_KEY=XXXXXX
 ```
 
-If decided to run OSS model, the generation script uses vllm and therefore requires GPU for hosting and inferencing. If you have questions or concerns about evaluating OSS models, please reach out to us in our [discord channel](https://discord.gg/grXXvj9Whz).
+If decided to run OSS model, the generation script uses vllm and therefore requires GPU for hosting and inferencing.
 
-### Generating LLM Responses
+# Run Benchmark
+
+## (1) Generating LLM responses
 
 Use the following command for LLM inference of the evaluation dataset with specific models
 
@@ -118,30 +119,23 @@ In the following two sections, the optional `--test-category` parameter can be u
 | 240 | Relevance                  |
 
 
-### Evaluating the LLM generations
+## (2) Evaluating the LLM generations
 
-#### Running the Checker
+### Running the Checker
 
-Navigate to the `eval_checker` directory and run the `eval_runner.py` script with the desired parameters. The basic syntax is as follows:
+The basic syntax is as follows:
 
 ```bash
-python eval_runner.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
+python eval_checker/eval_runner.py --model MODEL_NAME --test-category TEST_CATEGORY --language LANGUAGE
 ```
 
-## Radar Chart
+### Radar Chart
 Inspired by Berkeley Function-Calling Leaderboard's interactive wagon wheel tool, we have created a charting feature, aiming to help users create visualization of the benchmark outcomes and better understand the performance by the models. This visualization tool helps users easily understand and compare the performance of different models, providing a clear, graphical representation of their strengths and weaknesses. This chart is organized into nine categories: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
 
-### Usage
-- Input: Each model should have exactly 9 scores enclosed in a list and in the following order: Irelevance Detection, Simple (AST), Multiple (AST), Parallel (AST), Parallel Multiple (AST), Simple (Exec), Multiple (Exec), Parallel (Exec), and Parallel Multiple (Exec).
-- Recommendation: For readability, it is recommended to limit the number of models to 4, but more can be plotted if desired.
-- Output: `radar_chart.png` will be created and saved in the current directory.
-
-- Example usage
+The basic syntax is as follows:
 ```bash
-python chart.py "[10, 20, 30, 40, 50, 60, 70, 80, 90]" "[20, 30, 40, 50, 60, 70, 80, 90, 100]" "[30, 40, 50, 60, 70, 80, 90, 100, 110]"
+python chart/chart.py --score_csv ./score/en/data.csv
 ```
-![image](./chart/radar_chart.png)
+![image](./misc/radar_chart.png)
 
 ## Contributor and License
-
-

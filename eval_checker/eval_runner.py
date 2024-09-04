@@ -1,7 +1,7 @@
 import sys
 import os
 import io
-sys.path.append("../")
+sys.path.append("./")
 
 from checker import ast_checker, exec_checker, executable_checker_rest
 from custom_exception import BadAPIStatusError
@@ -453,10 +453,10 @@ if __name__ == "__main__":
     parser.add_argument("--language", type=str, default="en", help="Specify the language for the test cases and results")
 
     args = parser.parse_args()
-    INPUT_PATH = f"../result/{args.language}/"
-    PROMPT_PATH = f"../data/{args.language}/"
-    POSSIBLE_ANSWER_PATH = "../data/possible_answer/"
-    OUTPUT_PATH = f"../score/{args.language}/"
+    INPUT_PATH = f"{ROOT}/../result/{args.language}/"
+    PROMPT_PATH = f"{ROOT}/../data/{args.language}/"
+    POSSIBLE_ANSWER_PATH = f"{ROOT}/../data/possible_answer/"
+    OUTPUT_PATH = f"{ROOT}/../score/{args.language}/"
     api_sanity_check = args.api_sanity_check
     test_categories = None
     if args.test_category is not None:

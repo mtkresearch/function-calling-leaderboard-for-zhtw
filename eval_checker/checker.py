@@ -1,3 +1,6 @@
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 from model_handler.constant import (
     UNDERSCORE_TO_DOT,
     JAVA_TYPE_CONVERSION,
@@ -34,7 +37,7 @@ NESTED_CONVERSION_TYPE_LIST = ["Array", "ArrayList", "array"]
 
 
 EVAL_GROUND_TRUTH_PATH = (
-    "./rest-eval-response_v5.jsonl"  # Ground truth file for v5 for rest execution
+    f"{ROOT}/rest-eval-response_v5.jsonl"  # Ground truth file for v5 for rest execution
 )
 with open(EVAL_GROUND_TRUTH_PATH, "r") as f:
     EVAL_GROUND_TRUTH = f.readlines()

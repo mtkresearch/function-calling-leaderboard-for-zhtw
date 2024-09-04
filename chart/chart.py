@@ -1,34 +1,23 @@
-import sys
-import ast
+import argparse
+
+import pandas as pd
 import plotly.graph_objects as go
 from matplotlib import cm
 from matplotlib.colors import to_rgba
 
 # Define the number of variables and categories
-categories = ['Irelevance Detection', 'Simple (AST)', 'Multiple (AST)', 'Parallel (AST)', 
-              'Parallel Multiple (AST)', 'Simple (Exec)', 'Multiple (Exec)', 'Parallel (Exec)', 'Parallel Multiple (Exec)']
-N = len(categories)
+categories = [
+    'Irelevance Detection', 
+    'Simple (AST)', 'Multiple (AST)', 'Parallel (AST)', 'Parallel Multiple (AST)', 
+    'Simple (Exec)', 'Multiple (Exec)', 'Parallel (Exec)', 'Parallel Multiple (Exec)'
+]
+cols_of_score = [
+    'Relevance Detection',
+    'Simple Function AST', 'Multiple Functions AST', 'Parallel Functions AST', 'Parallel Multiple AST',
+    'Simple Function Exec', 'Multiple Functions Exec', 'Parallel Functions Exec', 'Parallel Multiple Exec'
+]
 
-def parse_input(args):
-    """
-    Parse the command line input to extract model scores.
-    Args:
-        args (list): List of command line arguments (scores).
-    Returns:
-        List of model scores.
-    """
-    models = []
-    for arg in args[1:]:
-        try:
-            # Convert the string representation of the list to an actual list
-            model_scores = ast.literal_eval(arg)
-            if isinstance(model_scores, list) and len(model_scores) == N:
-                models.append(model_scores)
-            else:
-                print(f"Warning: Invalid input format or incorrect number of scores for a model: {arg}")
-        except (ValueError, SyntaxError) as e:
-            print(f"Error: Failed to parse input for model scores: {arg}. {e}")
-    return models
+N = len(categories)
 
 def generate_colors(num_colors):
     """
@@ -42,7 +31,7 @@ def generate_colors(num_colors):
     colors = [to_rgba(colormap(i), alpha=0.5) for i in range(num_colors)]
     return ['rgba({:.0f}, {:.0f}, {:.0f}, {:.2f})'.format(r*255, g*255, b*255, a) for r, g, b, a in colors]
 
-def create_radar_chart(models):
+def create_radar_chart(models, model_names, out_png):
     """
     Create a radar chart from the provided model scores.
     Args:
@@ -53,7 +42,8 @@ def create_radar_chart(models):
 
     num_models = len(models)
     colors = generate_colors(num_models)
-    model_names = [f'Model {i+1}' for i in range(num_models)]
+    if not model_names:
+        model_names = [f'Model {i+1}' for i in range(num_models)]
 
     for idx, model in enumerate(models):
         model += model[:1]  # Close the radar chart
@@ -81,14 +71,21 @@ def create_radar_chart(models):
     )
 
     #fig.show()
-    fig.write_image("radar_chart.png")
+    fig.write_image(out_png)
+    print(f"{out_png} has been created and saved in your current directory")
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} [Model 1 Scores] [Model 2 Scores] ...")
-        print(f"Each model should have exactly {N} scores enclosed in a list.")
-    else:
-        models = parse_input(sys.argv)
-        if models:
-            create_radar_chart(models)
-            print("radar_chart.png has been created and saved in your current directory")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--score_csv", type=str, default="./score/en/data.csv")
+    parser.add_argument("--out_chart", type=str, default='./chart/radar_chart.png')
+    args = parser.parse_args()
+
+    df = pd.read_csv(args.score_csv)
+    models, model_names = [], []
+    for _, row in df.iterrows():
+        scores = [float(row[col].replace('%', '')) for col in cols_of_score]
+        print(scores)
+        models.append(scores)
+        model_names.append(row['Model'])
+
+    create_radar_chart(models, model_names, out_png=args.out_chart)
