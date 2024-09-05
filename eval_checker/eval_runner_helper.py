@@ -45,6 +45,12 @@ COLUMNS = [
 ]
 
 MODEL_METADATA_MAPPING = {
+    "breeze-fc-rc3": [
+        "Breeze-FC-RC3",
+        "",
+        "MediaTek Research",
+        "Proprietary",
+    ],
     "gpt-4o-2024-05-13-FC": [
         "GPT-4o-2024-05-13 (FC)",
         "https://openai.com/index/hello-gpt-4o/",
