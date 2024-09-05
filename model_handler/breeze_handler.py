@@ -3,9 +3,6 @@ import json
 from mtkresearch.llm.prompt import MRPromptV2 
 
 from model_handler.oss_handler import OSSHandler
-from model_handler.utils import (
-    language_specific_pre_processing,
-)
 
 
 class BreezeHandler(OSSHandler):
@@ -34,19 +31,6 @@ class BreezeHandler(OSSHandler):
         ]
         model_query = self.prompt_template.get_prompt(conversations, function).removeprefix(self.bos_token)
         return model_query
-
-    def process_input(self, test_question, format_prompt_func):
-        prompts = []
-        for question in test_question:
-            test_category = question["id"].rsplit("_", 1)[0]
-            prompt = question["question"]
-            functions = question["function"]
-            functions = language_specific_pre_processing(
-                question["function"], test_category
-            )
-            prompts.append(format_prompt_func(prompt, functions))
-
-        return prompts
 
     def inference(
         self,

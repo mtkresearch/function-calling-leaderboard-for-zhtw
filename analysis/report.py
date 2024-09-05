@@ -64,9 +64,12 @@ def generate_report(model_name, lang, out_json):
         content[key] = []
         for i, (problem, result) in enumerate(zip(problems[key], results[key])):
             del result["id"]
-            del result["input_token_count"]
-            del result["output_token_count"]
-            del result["latency"]
+            if "input_token_count" in result:
+                del result["input_token_count"]
+            if "output_token_count" in result:
+                del result["output_token_count"]
+            if "latency" in result:
+                del result["latency"]
 
             if i in failures[key]:  # failed
                 failed = failures[key][i]
