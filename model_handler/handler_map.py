@@ -21,8 +21,10 @@ from model_handler.nvidia_handler import NvidiaHandler
 from model_handler.glm_handler import GLMHandler
 from model_handler.yi_handler import YiHandler
 from model_handler.xlam_handler import xLAMHandler
+from model_handler.breeze_handler import BreezeHandler
 
 handler_map = {
+    "breeze-fc-rc3": BreezeHandler,
     "gorilla-openfunctions-v0": GorillaHandler,
     "gorilla-openfunctions-v2": GorillaHandler,
     "gpt-4o-2024-05-13": OpenAIHandler,
