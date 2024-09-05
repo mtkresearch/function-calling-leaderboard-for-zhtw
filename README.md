@@ -1,6 +1,6 @@
-# Berkeley Function Call Leaderboard for ZHTW
+# Function Calling Leaderboard for ZHTW
 
-Berkeley Function Call Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/ShishirPatil/gorilla), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
+Function Calling Leaderboard for Traditional Chinese (zh-tw) is a fork of the [Berkeley Function Calling Leaderboard](https://github.com/ShishirPatil/gorilla), designed to support localized functionality for a Traditional Chinese function calling benchmark, specifically tailored for use in Taiwan. 
 
 # Introduction
 As the adoption of Large Language Models (LLMs) grows, evaluating their task-performing abilities—such as real-time information retrieval and external API call execution—becomes increasingly important. LLM performance varies significantly based on the language used, the number of functions called, and the specific user prompts. To address this variability, we propose a robust function-calling benchmark tailored to selected languages and diverse test data formats, ensuring consistent and reliable performance assessment across different use cases.
