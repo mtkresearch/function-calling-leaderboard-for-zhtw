@@ -37,7 +37,7 @@ class BreezeHandler(OSSHandler):
     ):
         return super().inference(
             test_question, num_gpus, gpu_memory_utilization, format_prompt_func=self._format_prompt,
-            stop_token_ids=self.im_end_token_id,
+            stop_token_ids=[self.im_end_token_id],
         )
 
     def decode_ast(self, result, language="Python"):
