@@ -7,6 +7,8 @@ from model_handler.oss_handler import OSSHandler
 
 class BreezeHandler(OSSHandler):
     def __init__(self, model_name, temperature=0.1, top_p=0.1, max_tokens=1000) -> None:
+        if model_name.endswith('rc3'):
+            model_name = '/kaggle/working/breeze-fc/'
         super().__init__(model_name, temperature, top_p, max_tokens)
 
         if model_name.endswith('rc3'):
