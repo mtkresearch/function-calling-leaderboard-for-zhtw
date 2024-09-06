@@ -50,7 +50,7 @@ def create_radar_chart(models, model_names, out_png):
         fig.add_trace(go.Scatterpolar(
             r=model,
             theta=categories + categories[:1],
-            fill='toself',
+            fill=None,
             name=model_names[idx],
             fillcolor=colors[idx]
         ))
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     df = pd.read_csv(args.score_csv)
     models, model_names = [], []
-    for _, row in df.iterrows():
+    for _, row in df.sort_values('Model').iterrows():
         scores = [float(row[col].replace('%', '')) for col in cols_of_score]
         models.append(scores)
         model_names.append(row['Model'])

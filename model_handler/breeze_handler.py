@@ -3,6 +3,7 @@ import json
 from mtkresearch.llm.prompt import MRPromptV2 
 
 from model_handler.oss_handler import OSSHandler
+from model_handler.utils import convert_to_function_call
 
 
 class BreezeHandler(OSSHandler):
@@ -54,12 +55,14 @@ class BreezeHandler(OSSHandler):
 
         return ans_jsons, {"input_tokens": 0, "output_tokens": 0, "latency": 0}
 
-    def decode_ast(self, result, language="Python"):
+    def _parse(self, result):
         conv = self.prompt_template.parse_generated_str(result)
-        return [{x['function']['name']: json.loads(x['function']['arguments'])} 
+        return [{x['function']['name']: x['function']['arguments']} 
                 for x in conv['tool_calls']]
 
+    def decode_ast(self, result, language="Python"):
+        return [{k: json.loads(v) for k, v in x.items()} for x in self._parse(result)]
+
     def decode_execute(self, result):
-        conv = self.prompt_template.parse_generated_str(result)
-        return [{x['function']['name']: json.loads(x['function']['arguments'])} 
-                for x in conv['tool_calls']]
+        function_call = convert_to_function_call(self._parse(result))
+        return function_call
