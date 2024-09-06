@@ -22,7 +22,7 @@ class BreezeHandler(OSSHandler):
             self.prompt_template = MRPromptV2(bos_token=self.bos_token, eos_token=self.eos_token)
             self.model_path = '/kaggle/working/breeze-fc/'
 
-    def _format_prompt(self, prompt, function):
+    def _format_prompt(self, prompt, function, test_category):
         conversations = [
             {
                 'role': 'user',
