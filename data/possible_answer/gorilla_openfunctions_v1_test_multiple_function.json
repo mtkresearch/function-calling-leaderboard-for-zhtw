@@ -149,7 +149,7 @@
 {"id": "multiple_function_148", "ground_truth": {"get_stock_info": {"company_name": ["Apple Inc.", "Apple", "蘋果", "蘋果公司"], "detail_level": ["detailed", "詳細"], "market": ["NASDAQ", ""]}}}
 {"id": "multiple_function_149", "ground_truth": {"sentiment_analysis": {"text": ["I love the food here! It's always fresh and delicious.", "我喜歡這裡的食物！它總是新鮮又美味。", "我喜歡這裡的食物！它總是新鮮又美味"], "language": ["english", "English", "中文", "繁體中文"]}}}
 {"id": "multiple_function_150", "ground_truth": {"calculate_neuronal_activity": {"input_synaptic_rate": [200], "weight": [0.5], "decay_rate": [0.1]}}}
-{"id": "multiple_function_151", "ground_truth": {"social_media_analytics.most_followed": {"topic": ["psychology", "Psychology", "心理學"], "sub_topics": [["behaviour", "group dynamics"], ["group dynamics", "behaviour"], ["行為", "群體動力學"]], "region": ["", "global"]}}}
+{"id": "multiple_function_151", "ground_truth": {"social_media_analytics.most_followed": {"topic": ["psychology", "Psychology", "心理學"], "sub_topics": [["behaviour", "group dynamics"], ["group dynamics", "behaviour"], ["行為", "群體動力學"], ["群體動力學", "行為"]], "region": ["", "global"]}}}
 {"id": "multiple_function_152", "ground_truth": {"history.get_key_events": {"country": ["Germany", "德國"], "start_year": [1871], "end_year": [1945], "event_type": [["War"], ["戰爭"]]}}}
 {"id": "multiple_function_153", "ground_truth": {"get_event_date": {"event": ["Treaty of Lisbon", "Signing of the Treaty of Lisbon", "里斯本條約", "里斯本條約簽署", "簽署里斯本條約"], "location": ["", "global"]}}}
 {"id": "multiple_function_154", "ground_truth": {"US_president.in_year": {"year": [1861], "full_name": [true, ""]}}}

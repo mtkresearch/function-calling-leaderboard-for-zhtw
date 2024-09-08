@@ -88,7 +88,7 @@
 {"id": "simple_87", "ground_truth": {"array_sort": {"list": [[5.0, 3.0, 4.0, 1.0, 2.0]], "order": ["ascending", "升序", "遞增"]}}}
 {"id": "simple_88", "ground_truth": {"calculate_BMI": {"weight_kg": [70], "height_m": [1.75]}}}
 {"id": "simple_89", "ground_truth": {"db_fetch_records": {"database_name": ["StudentDB"], "table_name": ["students", "學生"], "conditions": [{"department": ["Science", "科學"], "school": ["Bluebird High School", "Bluebird HS"]}], "fetch_limit": ["", 0]}}}
-{"id": "simple_90", "ground_truth": {"employee.fetch_data": {"company_name": ["ABC Ltd."], "employee_id": [345], "data_field": [["Personal Info", "Job History"], ["個人資訊", "工作經歷"], ["個人資料", "工作經歷"]]}}}
+{"id": "simple_90", "ground_truth": {"employee.fetch_data": {"company_name": ["ABC Ltd.", "ABC有限公司"], "employee_id": [345], "data_field": [["Personal Info", "Job History"], ["個人資訊", "工作經歷"], ["個人資料", "工作經歷"]]}}}
 {"id": "simple_91", "ground_truth": {"get_restaurant": {"cuisine": ["sushi", "壽司"], "location": ["Boston", "波士頓"], "condition": ["open on Sundays", "opens on Sundays", "星期天營業", "星期日營業", "週日營業"]}}}
 {"id": "simple_92", "ground_truth": {"imdb.find_movies_by_actor": {"actor_name": ["Leonardo DiCaprio", "李奧納多·狄卡皮歐", "李奧納多狄卡皮歐"], "year": [2010], "category": ["", "all"]}}}
 {"id": "simple_93", "ground_truth": {"get_theater_movie_releases": {"location": ["LA", "洛杉磯"], "timeframe": [7], "format": ["IMAX"]}}}
@@ -160,7 +160,7 @@
 {"id": "simple_159", "ground_truth": {"get_act_details": {"act_name": ["Criminal Law Amendment Act", "Criminal Law Amendment", "刑法修正案"], "amendment_year": [2013]}}}
 {"id": "simple_160", "ground_truth": {"get_case_info": {"docket": ["2022/AL2562"], "court": ["California", "CA", "加州", "加利福尼亞州"], "info_type": ["victim", "受害者"]}}}
 {"id": "simple_161", "ground_truth": {"crime_statute_lookup": {"jurisdiction": ["California", "CA", "加州", "加利福尼亞州"], "crime": ["theft", "竊盜罪", "盜竊罪"], "detail_level": ["detailed", "詳細"]}}}
-{"id": "simple_162", "ground_truth": {"generate_law_contract": {"parties": [["John", "Alice"], ["John", "Alice"]], "contract_type": ["Rental Agreement", "rental agreement", "租賃協議", "租契"], "location": ["California", "CA", "加州", "加利福尼亞州"]}}}
+{"id": "simple_162", "ground_truth": {"generate_law_contract": {"parties": [["John", "Alice"], ["John", "Alice"], ["約翰", "愛麗絲"], ["愛麗絲", "約翰"]], "contract_type": ["Rental Agreement", "rental agreement", "租賃協議", "租契"], "location": ["California", "CA", "加州", "加利福尼亞州"]}}}
 {"id": "simple_163", "ground_truth": {"property_records.get": {"address": ["123 main street"], "parcel_number": ["1234567890"], "county": ["Santa Clara", "聖塔克拉拉"], "include_owner": [true]}}}
 {"id": "simple_164", "ground_truth": {"get_crime_rate": {"city": ["San Francisco", "舊金山"], "state": ["California", "CA", "加州", "加利福尼亞州"], "type": ["violent", "", "暴力犯罪", "暴力"], "year": [2020]}}}
 {"id": "simple_165", "ground_truth": {"civil_cases.retrieve": {"year": [2020], "crime_type": ["theft", "竊盜罪", "盜竊罪"], "location": ["Los Angeles", "Los Angeles, California", "洛杉磯", "加州洛杉磯", "加利福尼亞州洛杉磯"]}}}
