@@ -77,7 +77,7 @@ def create_radar_chart(models, model_names, out_png):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--score_csv", type=str, default="./score/zhtw/data.csv")
-    parser.add_argument("--out_chart", type=str, default='./score/zhtw/radar_chart_zhtw.png')
+    parser.add_argument("--out_chart", type=str, default='./score/zhtw/radar_chart.png')
     args = parser.parse_args()
 
     df = pd.read_csv(args.score_csv)
