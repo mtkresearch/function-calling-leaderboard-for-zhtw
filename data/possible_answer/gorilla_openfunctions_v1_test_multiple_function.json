@@ -5,15 +5,15 @@
 {"id": "multiple_function_4", "ground_truth": {"kinematics.calculate_displacement": {"initial_speed": [20], "acceleration": [10], "time": [5], "rounding": ["", 2]}}}
 {"id": "multiple_function_5", "ground_truth": {"weather.get_by_coordinates_date": {"coordinates": [[46.603354, 1.888334]], "date": ["2019-12-13", "2019年12月13日"]}}}
 {"id": "multiple_function_6", "ground_truth": {"capacitance_calculator.calculate": {"A": [10], "d": [0.01], "K": [1.0, ""]}}}
-{"id": "multiple_function_7", "ground_truth": {"wildlife_population.assess_growth": {"species": ["deer", "Deer", "鹿"], "location": ["Washington state", "WA", "Washington", "華盛頓州", "華盛頓"], "duration": [10]}}}
-{"id": "multiple_function_8", "ground_truth": {"realestate.find_properties": {"location": ["SD", "San Diego", "San Diego, CA", "CA", "聖地牙哥", "加州聖地牙哥", "加利福尼亞州聖地牙哥"], "propertyType": ["villa", "別墅"], "bedrooms": [3], "budget": [{"min": [300000], "max": [400000]}]}}}
+{"id": "multiple_function_7", "ground_truth": {"wildlife_population.assess_growth": {"species": ["deer", "Deer", "鹿", "鹿群"], "location": ["Washington state", "WA", "Washington", "華盛頓州", "華盛頓"], "duration": [10]}}}
+{"id": "multiple_function_8", "ground_truth": {"realestate.find_properties": {"location": ["SD", "San Diego", "San Diego, CA", "CA", "聖地牙哥", "加州聖地牙哥", "加利福尼亞州聖地牙哥", "聖地牙哥, CA"], "propertyType": ["villa", "別墅"], "bedrooms": [3], "budget": [{"min": [300000], "max": [400000]}]}}}
 {"id": "multiple_function_9", "ground_truth": {"calculate_average": {"gradeDict": [{"math": [90], "science": [75], "history": [82], "music": [89]}]}}}
 {"id": "multiple_function_10", "ground_truth": {"database.modify_columns": {"db_name": ["employees"], "table": ["personal_data"], "operation": ["delete", "刪除"], "columns": [["email", "ssn"], ["ssn", "email"], ["email", "social_security_number"], ["social_security_number", "email"], ["email", "social security number"], ["social security number", "email"], ["社會安全號碼", "電子信箱"], ["電子信箱", "社會安全號碼"], ["社會安全號碼", "電子郵件地址"], ["電子郵件地址", "社會安全號碼"]]}}}
 {"id": "multiple_function_11", "ground_truth": {"math_roots.quadratic": {"a": [5], "b": [20], "c": [-25]}}}
 {"id": "multiple_function_12", "ground_truth": {"corporate_finance.calculate_YOY_growth_rate": {"company_name": ["Tech Inc"], "year1": [2019], "year1_revenue": [1000000], "year2": [2020], "year2_revenue": [1200000]}}}
 {"id": "multiple_function_13", "ground_truth": {"corporate_finance.revenue_forecast": {"company": ["XYZ"], "product": ["A", "Product A", "產品A"], "sales_units_increase_percentage": [10]}}}
 {"id": "multiple_function_14", "ground_truth": {"finance.property_depreciation": {"initial_cost": [200000], "depreciation_rate": [3], "years": [5], "monthly": [false, true, ""]}}}
-{"id": "multiple_function_15", "ground_truth": {"solarFarm.potential": {"coordinates": [[43.653225, -79.383186]], "panelArea": [80000], "month": ["December", "Dec", "十二月"]}}}
+{"id": "multiple_function_15", "ground_truth": {"solarFarm.potential": {"coordinates": [[43.653225, -79.383186]], "panelArea": [80000], "month": ["December", "Dec", "十二月", "12"]}}}
 {"id": "multiple_function_16", "ground_truth": {"population_genetics.calculate_ne": {"species": ["wild tiger", "tiger", "老虎", "野生老虎"], "generations": [100], "probability": [0.95]}}}
 {"id": "multiple_function_17", "ground_truth": {"currency_conversion.get_rate": {"from_currency": ["EUR", "Euro", "歐元"], "to_currency": ["Dollar", "USD", "美元", "美金"], "date": ["2022-01-01", "01/01/2022", "1/1/2022", "Jan.1,2022", "January 1, 2022", "2022-1-1", "2022年1月1日"]}}}
 {"id": "multiple_function_18", "ground_truth": {"european_history.battle_details": {"battle": ["Battle of Stalingrad", "Stalingrad", "史達林格勒戰役", "史達林格勒"]}}}
@@ -43,24 +43,24 @@
 {"id": "multiple_function_42", "ground_truth": {"calculate_final_temperature": {"quantity1": [2], "temperature1": [300], "quantity2": [3], "temperature2": [400]}}}
 {"id": "multiple_function_43", "ground_truth": {"biological.calc_energy": {"mols": [5], "substance": ["C6H12O6"], "joules_per_mol": [2800, ""]}}}
 {"id": "multiple_function_44", "ground_truth": {"calculate.weight_in_space": {"weight_earth_kg": [70], "planet": ["Mars", "火星"]}}}
-{"id": "multiple_function_45", "ground_truth": {"geology.get_era": {"era_name": ["Ice age", "冰河"], "calculate_years_ago": [true]}}}
+{"id": "multiple_function_45", "ground_truth": {"geology.get_era": {"era_name": ["Ice age", "冰河", "冰河時期"], "calculate_years_ago": [true]}}}
 {"id": "multiple_function_46", "ground_truth": {"sort_list": {"elements": [["Sam", "Alice", "Jack"]], "order": ["asc", "", "升序"]}}}
 {"id": "multiple_function_47", "ground_truth": {"cosine_similarity.calculate": {"vector1": [[3, 2, 1]], "vector2": [[1, 2, 3]], "rounding": ["", 0]}}}
-{"id": "multiple_function_48", "ground_truth": {"library.find_nearby": {"location": ["New York City", "NYC", "New York City, NY"], "preferences": [["Pet-friendly", "Disabled Access"], ["Disabled Access", "Pet-friendly"]]}}}
+{"id": "multiple_function_48", "ground_truth": {"library.find_nearby": {"location": ["New York City", "NYC", "New York City, NY", "紐約市, NY", "紐約市"], "preferences": [["Pet-friendly", "Disabled Access"], ["Disabled Access", "Pet-friendly"], ["寵物友善", "障礙通道"], ["障礙通道", "寵物友善"]]}}}
 {"id": "multiple_function_49", "ground_truth": {"calc_Compound_Interest": {"principle_amount": [1500], "duration": [2], "annual_rate": [2.5], "compound_freq": ["", 1]}}}
-{"id": "multiple_function_50", "ground_truth": {"house_price_forecast": {"location": ["New York", "New York, NY", "NYC", "New York City", "紐約", "紐約市"], "months": [1], "features": [[], ""]}}}
+{"id": "multiple_function_50", "ground_truth": {"house_price_forecast": {"location": ["New York", "New York, NY", "NYC", "New York City", "紐約", "紐約市", "紐約市, NY", "紐約, NY"], "months": [1], "features": [[], ""]}}}
 {"id": "multiple_function_51", "ground_truth": {"dice_roll_probability": {"desired_sum": [7], "sides_per_die": [6], "n_rolls": [2]}}}
 {"id": "multiple_function_52", "ground_truth": {"currency_conversion": {"amount": [100], "from_currency": ["Euro", "EUR", "歐元"], "to_currency": ["USD", "US Dollar", "美金", "美元"]}}}
-{"id": "multiple_function_53", "ground_truth": {"linear_regression": {"independent_var": [["interest rates", "unemployment rates"], ["interest_rate", "unemployment_rate"], ["interest rate", "unemployment rate"], ["利率", "失業率"], ["失業率", "利率"]], "dependent_var": ["house_price", "house price"], "forecast_period": [5]}}}
+{"id": "multiple_function_53", "ground_truth": {"linear_regression": {"independent_var": [["interest rates", "unemployment rates"], ["interest_rate", "unemployment_rate"], ["interest rate", "unemployment rate"], ["利率", "失業率"], ["失業率", "利率"]], "dependent_var": ["house_price", "house price", "房價"], "forecast_period": [5]}}}
 {"id": "multiple_function_54", "ground_truth": {"corporate_finance.dividend_data": {"company": ["Apple Inc", "Apple", "Apple Inc.", "蘋果", "蘋果公司"], "years": [5], "frequency": ["", "annually", "年", "每年"]}}}
 {"id": "multiple_function_55", "ground_truth": {"stock_forecast": {"company": ["Google", "GOOG", "谷歌"], "days": [3], "model": ["", "regression", "迴歸"]}}}
 {"id": "multiple_function_56", "ground_truth": {"avg_closing_price": {"company": ["Apple", "蘋果"], "days": [60], "data_source": ["yahoo finance", ""]}}}
 {"id": "multiple_function_57", "ground_truth": {"financial.compound_interest": {"principle": [1000], "rate": [0.05], "time": [10], "n": [4]}}}
-{"id": "multiple_function_58", "ground_truth": {"lawyer.search": {"location": ["Los Angeles", "Los Angeles, CA", "LA", "洛杉磯", "加州洛杉磯", "加利福尼亞州洛杉磯"], "expertise": ["Divorce", "離婚"]}}}
-{"id": "multiple_function_59", "ground_truth": {"lawyer_finder": {"location": ["New York", "New York, NY", "NY", "New York City", "NYC", "紐約", "紐約市"], "specialization": [["Criminal Law"], ["criminal law"], ["刑法"], ["刑事法律"]], "experience": ["", 1]}}}
+{"id": "multiple_function_58", "ground_truth": {"lawyer.search": {"location": ["Los Angeles", "Los Angeles, CA", "LA", "洛杉磯", "加州洛杉磯", "加利福尼亞州洛杉磯", "洛杉磯, CA"], "expertise": ["Divorce", "離婚"]}}}
+{"id": "multiple_function_59", "ground_truth": {"lawyer_finder": {"location": ["New York", "New York, NY", "NY", "New York City", "NYC", "紐約", "紐約市"], "specialization": [["Criminal Law"], ["criminal law"], ["刑法"], ["刑事法律"], ["刑事"]], "experience": ["", 1]}}}
 {"id": "multiple_function_60", "ground_truth": {"humidity_temperature_forecast": {"location": ["New York City", "NYC", "紐約市"], "days": [7]}}}
-{"id": "multiple_function_61", "ground_truth": {"landscape_architect.find_specialty": {"location": ["Portland", "Portland, OR", "波特蘭", "俄勒岡州波特蘭"], "specialization": ["small space garden design", "小型庭園設計"], "years_experience": [5]}}}
-{"id": "multiple_function_62", "ground_truth": {"nature_park.find_nearby": {"location": ["Boston, MA", "Boston", "麻薩諸塞州波士頓", "麻州波士頓", "波士頓"], "features": [["Camping", "Scenic View"], ["Scenic View", "Camping"], ["露營", "景觀"], ["景觀", "露營"]]}}}
+{"id": "multiple_function_61", "ground_truth": {"landscape_architect.find_specialty": {"location": ["Portland", "Portland, OR", "波特蘭", "俄勒岡州波特蘭", "波特蘭, OR"], "specialization": ["small space garden design", "小型庭園設計"], "years_experience": [5]}}}
+{"id": "multiple_function_62", "ground_truth": {"nature_park.find_nearby": {"location": ["Boston, MA", "Boston", "麻薩諸塞州波士頓", "麻州波士頓", "波士頓", "波士頓, MA"], "features": [["Camping", "Scenic View"], ["Scenic View", "Camping"], ["露營", "景觀"], ["景觀", "露營"]]}}}
 {"id": "multiple_function_63", "ground_truth": {"air_quality_forecast": {"location": ["New York", "New York, NY", "New York City", "NYC", "紐約", "紐約市"], "days": [7]}}}
 {"id": "multiple_function_64", "ground_truth": {"uv_index.get_future": {"location": ["Tokyo", "東京"], "date": ["Tomorrow", "", "明天"]}}}
 {"id": "multiple_function_65", "ground_truth": {"geodistance.find": {"origin": ["New York City", "NYC", "紐約市"], "destination": ["Los Angeles", "LA", "洛杉磯"], "unit": ["miles", "", "英里", "英哩"]}}}
@@ -75,22 +75,22 @@
 {"id": "multiple_function_74", "ground_truth": {"art_auction.fetch_artwork_price": {"artwork_name": ["Starry Night", "星夜"], "artist": ["Van Gogh", "梵谷", ""], "platform": ["all", ""]}}}
 {"id": "multiple_function_75", "ground_truth": {"paint_color.trends": {"room": ["living room", "Living room", "客廳"], "period": ["", "Daily"]}}}
 {"id": "multiple_function_76", "ground_truth": {"sculpture.create_custom": {"item": ["horse", "Horse", "馬"], "material": ["Bronze", "bronze", "青銅", "銅"], "size": ["", 12]}}}
-{"id": "multiple_function_77", "ground_truth": {"artwork_search.find": {"type": ["sculpture", "雕塑", "雕像"], "location": ["New York", "New York, NY", "New York City", "NYC", "紐約", "紐約市"], "era": ["contemporary", ""]}}}
+{"id": "multiple_function_77", "ground_truth": {"artwork_search.find": {"type": ["sculpture", "雕塑", "雕像"], "location": ["New York", "New York, NY", "New York City", "NYC", "紐約", "紐約市"], "era": ["contemporary", "", "當代"]}}}
 {"id": "multiple_function_78", "ground_truth": {"museum_info": {"museum": ["Natural History Museum", "自然史博物館", "自然歷史博物館"], "city": ["London", "倫敦"], "features": [["timings", "exhibitions", "accessibility"], ["exhibitions", "timings", "accessibility"], ["exhibitions", "accessibility", "timings"], ["accessibility", "timings", "exhibitions"], ["accessibility", "exhibitions", "timings"], ["timings", "accessibility", "exhibitions"], ["開放時間", "展覽內容", "無障礙設施"], ["展覽內容", "開放時間", "無障礙設施"], ["展覽內容", "無障礙設施", "開放時間"], ["無障礙設施", "開放時間", "展覽內容"], ["無障礙設施", "展覽內容", "開放時間"], ["開放時間", "無障礙設施", "展覽內容"]]}}}
 {"id": "multiple_function_79", "ground_truth": {"exhibition_info": {"museum_name": ["Museum of Modern Art", "MOMA", "Museum of Modern Art, New York", "現代藝術博物館", "紐約現代藝術博物館"], "month": ["", 1]}}}
-{"id": "multiple_function_80", "ground_truth": {"music_shop.find_nearby": {"location": ["Nashville, TN", "Nashville", "納什維爾", "田納西州納什維爾"], "services": [["Violin Lessons"], ["小提琴課程"]], "instruments": [["Guitars"], ["吉他"]]}}}
+{"id": "multiple_function_80", "ground_truth": {"music_shop.find_nearby": {"location": ["Nashville, TN", "Nashville", "納什維爾", "田納西州納什維爾", "納什維爾, TN"], "services": [["Violin Lessons"], ["小提琴課程"]], "instruments": [["Guitars"], ["吉他"]]}}}
 {"id": "multiple_function_81", "ground_truth": {"concert.book_ticket": {"artist": ["Eminem", "阿姆"], "location": ["New York City", "NYC", "紐約市"], "add_ons": [["Backstage Pass"], ["後台通行證"]]}}}
 {"id": "multiple_function_82", "ground_truth": {"music.generate": {"key": ["C Major", "C大調"], "tempo": [120], "time_signature": ["", "4/4"]}}}
 {"id": "multiple_function_83", "ground_truth": {"player_stats.get_all_time_goals": {"player_name": ["Lionel Messi", "梅西", "萊納爾·梅西", "萊納爾梅西"], "team_name": ["Barcelona", "巴塞隆納足球俱樂部", "巴塞", "巴塞隆納"], "competition": [""]}}}
 {"id": "multiple_function_84", "ground_truth": {"getTopGoalScorers": {"competition": ["UEFA Champions League", "歐洲冠軍聯賽"], "team": ["Barcelona", "巴塞隆納足球俱樂部", "巴塞", "巴塞隆納隊"], "number": [10]}}}
-{"id": "multiple_function_85", "ground_truth": {"soccer_scores.get_scores": {"team": ["Real Madrid", "皇家馬德里足球俱樂部", "皇家馬德里隊", "皇馬"], "league": ["La Liga", "西班牙足球甲級聯賽", "西甲聯賽"], "rounds": [5]}}}
+{"id": "multiple_function_85", "ground_truth": {"soccer_scores.get_scores": {"team": ["Real Madrid", "皇家馬德里足球俱樂部", "皇家馬德里", "皇馬"], "league": ["La Liga", "西班牙足球甲級聯賽", "西甲聯賽", "西甲"], "rounds": [5]}}}
 {"id": "multiple_function_86", "ground_truth": {"BoardGameGeek.recommend": {"numPlayers": [2], "category": ["strategy", "策略"], "difficulty": ["", "beginner"]}}}
 {"id": "multiple_function_87", "ground_truth": {"games.update.find": {"game": ["Cyberpunk 2077", "電馭叛客2077"], "platform": ["Xbox"], "region": ["", "global"]}}}
 {"id": "multiple_function_88", "ground_truth": {"video_games.get_player_count": {"game_title": ["World of Warcraft", "魔獸世界", "魔獸"], "year": [2020], "platform": [""]}}}
 {"id": "multiple_function_89", "ground_truth": {"recipe_search": {"ingredients": [["chicken", "mushrooms"], ["mushrooms", "chicken"], ["雞肉", "蘑菇"], ["蘑菇", "雞肉"]], "calories": [500], "meal": ["lunch", ""]}}}
-{"id": "multiple_function_90", "ground_truth": {"restaurant.find_group": {"location": ["Seattle", "Seattle, WA", "西雅圖", "華盛頓西雅圖", "華盛頓州西雅圖"], "cuisine": [["Seafood"], ["海鮮"]], "group_size": [5]}}}
+{"id": "multiple_function_90", "ground_truth": {"restaurant.find_group": {"location": ["Seattle", "Seattle, WA", "西雅圖", "華盛頓西雅圖", "華盛頓州西雅圖", "西雅圖, WA"], "cuisine": [["Seafood"], ["海鮮"]], "group_size": [5]}}}
 {"id": "multiple_function_91", "ground_truth": {"recipe.find": {"mainIngredient": ["apple pie", "apple", "蘋果", "蘋果派"], "ingredientLimit": [4]}}}
-{"id": "multiple_function_92", "ground_truth": {"walmart.vegan_products": {"location": ["Denver, CO", "Denver", "丹佛", "科羅拉多州", "科羅拉多州丹佛"], "categories": [["vegan", "gluten-free"], ["gluten-free", "vegan"], ["素食", "無麩質"], ["無麩質", "素食"]]}}}
+{"id": "multiple_function_92", "ground_truth": {"walmart.vegan_products": {"location": ["Denver, CO", "Denver", "丹佛", "科羅拉多州", "科羅拉多州丹佛", "丹佛, CO"], "categories": [["vegan", "gluten-free"], ["gluten-free", "vegan"], ["素食", "無麩質"], ["無麩質", "素食"]]}}}
 {"id": "multiple_function_93", "ground_truth": {"hotel.book": {"location": ["New York", "New York, NY", "NYC", "紐約", "紐約市"], "roomType": ["deluxe", "Deluxe", "豪華"], "nights": [2], "additional_services": [["breakfast"], ["早餐"]]}}}
 {"id": "multiple_function_94", "ground_truth": {"hotel_room_pricing.get": {"hotelName": ["Hilton New York", "紐約希爾頓"], "roomType": ["suite with queen size bed", "帶有大號床的套房"], "nights": [3]}}}
 {"id": "multiple_function_95", "ground_truth": {"currency_exchange.convert": {"amount": [200], "from_currency": ["EUR", "歐元"], "to_currency": ["USD", "美元", "美金"], "live_conversion": [true]}}}
@@ -113,7 +113,7 @@
 {"id": "multiple_function_112", "ground_truth": {"forest_growth_forecast": {"location": ["Yellowstone National Park", "黃石國家公園"], "years": [5], "include_human_impact": [true]}}}
 {"id": "multiple_function_113", "ground_truth": {"calculate_fitness": {"trait_values": [[0.8, 0.7]], "trait_contributions": [[0.4, 0.6]]}}}
 {"id": "multiple_function_114", "ground_truth": {"prediction.evolution": {"species": ["Homo Sapiens", "Homo sapiens", "人類", "人"], "years": [50], "model": ["Darwin", "", "達爾文"]}}}
-{"id": "multiple_function_115", "ground_truth": {"find_restaurants": {"location": ["Manhattan", "曼哈頓"], "food_type": ["Thai", "泰式"], "number": [5], "dietary_requirements": [["vegan"], ["素食"], ["素"]]}}}
+{"id": "multiple_function_115", "ground_truth": {"find_restaurants": {"location": ["Manhattan", "曼哈頓"], "food_type": ["Thai", "泰式"], "number": [5], "dietary_requirements": [["vegan"], ["素食"], ["素"], ["純素"]]}}}
 {"id": "multiple_function_116", "ground_truth": {"calculate_bmi": {"weight": [85], "height": [180], "unit": ["", "metric"]}}}
 {"id": "multiple_function_117", "ground_truth": {"calculate_BMI": {"weight_kg": [70], "height_m": [1.75]}}}
 {"id": "multiple_function_118", "ground_truth": {"imdb.find_movies_by_actor": {"actor_name": ["Leonardo DiCaprio", "李奧納多狄卡皮歐"], "year": [2010], "category": ["", "all"]}}}
@@ -133,10 +133,10 @@
 {"id": "multiple_function_132", "ground_truth": {"finance.calculate_future_value": {"initial_investment": [20000], "rate_of_return": [0.08], "years": [5], "contribution": ["", 0]}}}
 {"id": "multiple_function_133", "ground_truth": {"calculate_mutual_fund_balance": {"investment_amount": [50000], "annual_yield": [0.05], "years": [3]}}}
 {"id": "multiple_function_134", "ground_truth": {"crime_record.get_record": {"case_number": ["CA123456"], "county": ["San Diego", "San Diego County", "聖地牙哥"], "details": [true]}}}
-{"id": "multiple_function_135", "ground_truth": {"get_case_info": {"docket": ["2022/AL2562"], "court": ["California", "CA"], "info_type": ["victim"]}}}
+{"id": "multiple_function_135", "ground_truth": {"get_case_info": {"docket": ["2022/AL2562"], "court": ["California", "CA", "加州"], "info_type": ["victim", "受害者"]}}}
 {"id": "multiple_function_136", "ground_truth": {"get_crime_rate": {"city": ["San Francisco", "San Francisco, CA", "SF", "舊金山"], "state": ["California", "CA", "加州", "加利福尼亞州"], "type": ["violent", "Violent", "暴力", "暴力犯罪"], "year": [2020]}}}
 {"id": "multiple_function_137", "ground_truth": {"lawsuit_search": {"company": ["Google", "谷歌"], "start_date": ["2021-01-01", "01/01/2021", "Jan.1,2021", "January 1, 2021", "2021年1月1日"], "location": ["California", "CA", "加州", "加利福尼亞州"], "status": ["ongoing", "", "持續"]}}}
-{"id": "multiple_function_138", "ground_truth": {"legal_case.fetch": {"case_id": ["R vs Adams", "R_vs_Adams"], "details": [true]}}}
+{"id": "multiple_function_138", "ground_truth": {"legal_case.fetch": {"case_id": ["R vs Adams", "R_vs_Adams", , "R v Adams"], "details": [true]}}}
 {"id": "multiple_function_139", "ground_truth": {"lawsuit_details.find": {"company_name": ["Apple Inc.", "蘋果公司"], "year": [2010], "case_type": ["Patent", "專利"]}}}
 {"id": "multiple_function_140", "ground_truth": {"lawsuits_search": {"company_name": ["Google", "谷歌"], "location": ["California", "CA", "加州", "加利福尼亞州"], "year": [2020], "case_type": ["", "all"]}}}
 {"id": "multiple_function_141", "ground_truth": {"lawsuit.check_case": {"case_id": [1234], "closed_status": [true]}}}
@@ -144,7 +144,7 @@
 {"id": "multiple_function_143", "ground_truth": {"calculate_slope_gradient": {"point1": [[40.7128, -74.006]], "point2": [[34.0522, -118.2437]], "unit": ["degree", ""]}}}
 {"id": "multiple_function_144", "ground_truth": {"air_quality": {"location": ["London", "倫敦"], "date": ["2022-08-16", "16/08/2022", "Aug.16,2022", "2022/08/16", "16\\08\\2022"]}}}
 {"id": "multiple_function_145", "ground_truth": {"calculate_emissions": {"distance": [12000], "fuel_type": ["gas", "gasoline", "燃油", "汽油"], "fuel_efficiency": [20], "efficiency_reduction": ["", 0.0]}}}
-{"id": "multiple_function_146", "ground_truth": {"restaurant.find_nearby": {"location": ["Seattle", "Seattle, WA", "西雅圖", "華盛頓州西雅圖"], "cuisine": ["Chinese", "中式"], "max_distance": [10]}}}
+{"id": "multiple_function_146", "ground_truth": {"restaurant.find_nearby": {"location": ["Seattle", "Seattle, WA", "西雅圖", "華盛頓州西雅圖", "西雅圖, WA"], "cuisine": ["Chinese", "中式"], "max_distance": [10]}}}
 {"id": "multiple_function_147", "ground_truth": {"map_service.get_directions": {"start": ["New York", "New York, NY", "NYC", "紐約", "紐約市"], "end": ["Los Angeles", "LA", "洛杉磯"], "avoid": [["highways", "tolls"], ["tolls", "highways"], ["收費站", "高速公路"], ["高速公路", "收費站"]]}}}
 {"id": "multiple_function_148", "ground_truth": {"get_stock_info": {"company_name": ["Apple Inc.", "Apple", "蘋果", "蘋果公司"], "detail_level": ["detailed", "詳細"], "market": ["NASDAQ", ""]}}}
 {"id": "multiple_function_149", "ground_truth": {"sentiment_analysis": {"text": ["I love the food here! It's always fresh and delicious.", "我喜歡這裡的食物！它總是新鮮又美味。", "我喜歡這裡的食物！它總是新鮮又美味"], "language": ["english", "English", "中文", "繁體中文"]}}}
@@ -183,15 +183,15 @@
 {"id": "multiple_function_182", "ground_truth": {"multiplayer_game_finder": {"platform": ["Windows 10"], "rating": [4.5], "genre": [""]}}}
 {"id": "multiple_function_183", "ground_truth": {"recipe_info.get_calories": {"website": ["Foodnetwork.com"], "recipe": ["Beef Lasagna", "牛肉千層麵"], "optional_meal_time": [""]}}}
 {"id": "multiple_function_184", "ground_truth": {"recipe_search": {"dietary_restriction": ["Vegetarian", "素食"], "ingredients": [["pasta", "cheese"], ["cheese", "pasta"], ["義大利麵", "乳酪"], ["乳酪", "義大利麵"], ["義大利麵", "起司"], ["起司", "義大利麵"]], "servings": [2]}}}
-{"id": "multiple_function_185", "ground_truth": {"restaurant_search.find_closest": {"location": ["Boston", "Boston, MA", "麻薩諸塞州波士頓", "麻州波士頓", "波士頓"], "cuisine": ["Sushi", "壽司"], "amenities": [["Patio"], ["露台"]]}}}
-{"id": "multiple_function_186", "ground_truth": {"find_recipe": {"dietary_restrictions": ["vegan", "素"], "recipe_type": ["dessert", "甜點"], "time": [30]}}}
+{"id": "multiple_function_185", "ground_truth": {"restaurant_search.find_closest": {"location": ["Boston", "Boston, MA", "麻薩諸塞州波士頓", "麻州波士頓", "波士頓", "波士頓, MA"], "cuisine": ["Sushi", "壽司"], "amenities": [["Patio"], ["露台"]]}}}
+{"id": "multiple_function_186", "ground_truth": {"find_recipe": {"dietary_restrictions": ["vegan", "素", "純素"], "recipe_type": ["dessert", "甜點"], "time": [30]}}}
 {"id": "multiple_function_187", "ground_truth": {"whole_foods.check_price": {"location": ["Los Angeles", "LA", "洛杉磯"], "items": [["tomatoes", "lettuce"], ["lettuce", "tomatoes"], ["番茄", "生菜"], ["生菜", "番茄"]]}}}
 {"id": "multiple_function_188", "ground_truth": {"grocery_store.find_best": {"my_location": ["Berkeley", "Berkeley,California", "Berkeley,CA", "Berkeley, CA", "柏克萊", "加州柏克萊", "加利福尼亞州柏克萊"], "rating": [4.5], "products": [["tomatoes", "pet food"], ["pet food", "tomatoes"], ["Tomatoes", "Pet food"], ["Pet food", "Tomatoes"], ["番茄", "寵物食品"], ["寵物食品", "番茄"]]}}}
 {"id": "multiple_function_189", "ground_truth": {"timezone.convert": {"time": ["3pm", "下午3點"], "from_timezone": ["America/New_York", "New York", "New York, NY", "NY", "NYC", "Eastern Standard Time", "EST", "紐約時區", "紐約"], "to_timezone": ["Europe/London", "London", "British Summer Time", "BST", "Greenwich Mean Time", "GMT", "倫敦時區", "倫敦"]}}}
-{"id": "multiple_function_190", "ground_truth": {"book_hotel": {"hotel_name": ["Hilton Hotel", "Hilton", "希爾頓酒店", "希爾頓"], "location": ["Chicago", "芝加哥"], "room_type": ["single", "Single", "單人"], "start_date": ["2022-12-10", "10/12/2022", "Dec.10,2022", "10th December 2022", "10 December 2022", "2022年12月10日"], "nights": [2]}}}
-{"id": "multiple_function_191", "ground_truth": {"book_hotel": {"hotel_name": ["Hotel Paradise", "天堂酒店"], "location": ["Las Vegas", "Las Vegas, NV", "LV", "拉斯維加斯"], "room_type": ["luxury", "Luxury", "豪華"], "start_date": ["05-12-2022", "2022-05-12", "12/05/2022", "May.12,2022", "May 12, 2022", "2022年5月12日"], "stay_duration": [3], "view": ["city", "city view", "市景"]}}}
+{"id": "multiple_function_190", "ground_truth": {"book_hotel": {"hotel_name": ["Hilton Hotel", "Hilton", "希爾頓酒店", "希爾頓"], "location": ["Chicago", "芝加哥"], "room_type": ["single", "Single", "單人", "單人房"], "start_date": ["2022-12-10", "10/12/2022", "Dec.10,2022", "10th December 2022", "10 December 2022", "2022年12月10日"], "nights": [2]}}}
+{"id": "multiple_function_191", "ground_truth": {"book_hotel": {"hotel_name": ["Hotel Paradise", "天堂酒店"], "location": ["Las Vegas", "Las Vegas, NV", "LV", "拉斯維加斯", "拉斯維加斯, 內華達州"], "room_type": ["luxury", "Luxury", "豪華", "豪華客房"], "start_date": ["05-12-2022", "2022-05-12", "12/05/2022", "May.12,2022", "May 12, 2022", "2022年5月12日"], "stay_duration": [3], "view": ["city", "city view", "市景"]}}}
 {"id": "multiple_function_192", "ground_truth": {"currency_conversion.convert": {"amount": [150], "from_currency": ["EUR", "歐元"], "to_currency": ["CAD", "加幣"]}}}
-{"id": "multiple_function_193", "ground_truth": {"maps.get_distance_duration": {"start_location": ["Eiffel Tower", "艾菲爾鐵塔"], "end_location": ["Louvre Museum", "羅浮宮"], "traffic": ["", false]}}}
+{"id": "multiple_function_193", "ground_truth": {"maps.get_distance_duration": {"start_location": ["Eiffel Tower", "艾菲爾鐵塔", "艾菲爾鐵塔, 巴黎, 法國"], "end_location": ["Louvre Museum", "羅浮宮", "羅浮宮, 巴黎, 法國"], "traffic": ["", false]}}}
 {"id": "multiple_function_194", "ground_truth": {"get_museum_hours": {"museum_name": ["Metropolitan Museum of Art", "The Met", "Met Museum", "大都會藝術博物館", "大都會博物館"], "day": ["Saturday", "星期六", "週六"]}}}
 {"id": "multiple_function_195", "ground_truth": {"calc_heat_capacity": {"temp": [298], "volume": [10], "gas": ["air", "", "空氣"]}}}
 {"id": "multiple_function_196", "ground_truth": {"cellbio.get_proteins": {"cell_compartment": ["plasma membrane", "細胞膜"], "include_description": ["", false]}}}
