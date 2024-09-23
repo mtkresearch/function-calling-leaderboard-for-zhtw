@@ -7,7 +7,7 @@ from matplotlib.colors import to_rgba
 
 # Define the number of variables and categories
 categories = [
-    'Irelevance Detection', 
+    'Irrelevance Detection', 
     'Simple (AST)', 'Multiple (AST)', 'Parallel (AST)', 'Parallel Multiple (AST)', 
     'Simple (Exec)', 'Multiple (Exec)', 'Parallel (Exec)', 'Parallel Multiple (Exec)'
 ]

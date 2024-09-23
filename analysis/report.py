@@ -52,13 +52,17 @@ def _get_failures(lang, model_name):
             continue
     return failures
 
-def generate_report(model_name, lang, out_json):
+def generate_report(model_name, lang, out_json, skip_also_wrong_on_en=True, remove_executable=True):
     problems = _get_problems(lang)
     results = _get_results(lang, model_name)
     failures = _get_failures(lang, model_name)
+    if skip_also_wrong_on_en:
+        en_failures = _get_failures('en', model_name)
     
     content = {}
     for key in problems:
+        if remove_executable and 'executable' in key:
+            continue
         if key not in results:
             continue
         content[key] = []
@@ -72,6 +76,9 @@ def generate_report(model_name, lang, out_json):
                 del result["latency"]
 
             if i in failures[key]:  # failed
+                if skip_also_wrong_on_en and i in en_failures[key]:
+                    continue
+
                 failed = failures[key][i]
                 del failed["id"]
                 del failed["model_name"]

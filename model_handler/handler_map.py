@@ -24,7 +24,7 @@ from model_handler.xlam_handler import xLAMHandler
 from model_handler.breeze_handler import BreezeHandler
 
 handler_map = {
-    "breeze-fc-rc3": BreezeHandler,
+    "breeze-fc-v1": BreezeHandler,
     "gorilla-openfunctions-v0": GorillaHandler,
     "gorilla-openfunctions-v2": GorillaHandler,
     "gpt-4o-2024-05-13": OpenAIHandler,

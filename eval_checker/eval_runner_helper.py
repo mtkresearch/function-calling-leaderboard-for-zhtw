@@ -45,9 +45,9 @@ COLUMNS = [
 ]
 
 MODEL_METADATA_MAPPING = {
-    "breeze-fc-rc3": [
-        "Breeze-FC-RC3",
-        "",
+    "breeze-fc-v1": [
+        "Breeze-7B-FC-v1_0",
+        "https://huggingface.co/MediaTek-Research/Breeze-7B-FC-v1_0",
         "MediaTek Research",
         "Proprietary",
     ],

@@ -10,18 +10,11 @@ class BreezeHandler(OSSHandler):
     def __init__(self, model_name, temperature=0.01, top_p=0.01, max_tokens=1200) -> None:
         super().__init__(model_name, temperature, top_p, max_tokens)
 
-        if model_name.endswith('rc3'):
-            self.bos_token='<s>'
-            self.eos_token='</s>'
-            self.im_end_token_id = 61876
-            self.prompt_template = MRPromptV2(bos_token=self.bos_token, eos_token=self.eos_token)
-            self.model_path = '/kaggle/working/breeze-fc/'
-        else:
-            self.bos_token='<s>'
-            self.eos_token='</s>'
-            self.im_end_token_id = 61876
-            self.prompt_template = MRPromptV2(bos_token=self.bos_token, eos_token=self.eos_token)
-            self.model_path = '/kaggle/working/breeze-fc/'
+        self.bos_token='<s>'
+        self.eos_token='</s>'
+        self.im_end_token_id = 61876
+        self.prompt_template = MRPromptV2(bos_token=self.bos_token, eos_token=self.eos_token)
+        self.model_path = 'MediaTek-Research/Breeze-7B-FC-v1_0'
 
     def _format_prompt(self, prompt, function, test_category):
         conversations = [
