@@ -136,7 +136,7 @@
 {"id": "multiple_function_135", "ground_truth": {"get_case_info": {"docket": ["2022/AL2562"], "court": ["California", "CA", "加州"], "info_type": ["victim", "受害者"]}}}
 {"id": "multiple_function_136", "ground_truth": {"get_crime_rate": {"city": ["San Francisco", "San Francisco, CA", "SF", "舊金山"], "state": ["California", "CA", "加州", "加利福尼亞州"], "type": ["violent", "Violent", "暴力", "暴力犯罪"], "year": [2020]}}}
 {"id": "multiple_function_137", "ground_truth": {"lawsuit_search": {"company": ["Google", "谷歌"], "start_date": ["2021-01-01", "01/01/2021", "Jan.1,2021", "January 1, 2021", "2021年1月1日"], "location": ["California", "CA", "加州", "加利福尼亞州"], "status": ["ongoing", "", "持續"]}}}
-{"id": "multiple_function_138", "ground_truth": {"legal_case.fetch": {"case_id": ["R vs Adams", "R_vs_Adams", , "R v Adams"], "details": [true]}}}
+{"id": "multiple_function_138", "ground_truth": {"legal_case.fetch": {"case_id": ["R vs Adams", "R_vs_Adams", "R v Adams"], "details": [true]}}}
 {"id": "multiple_function_139", "ground_truth": {"lawsuit_details.find": {"company_name": ["Apple Inc.", "蘋果公司"], "year": [2010], "case_type": ["Patent", "專利"]}}}
 {"id": "multiple_function_140", "ground_truth": {"lawsuits_search": {"company_name": ["Google", "谷歌"], "location": ["California", "CA", "加州", "加利福尼亞州"], "year": [2020], "case_type": ["", "all"]}}}
 {"id": "multiple_function_141", "ground_truth": {"lawsuit.check_case": {"case_id": [1234], "closed_status": [true]}}}
