@@ -3,7 +3,7 @@
 {"id": "executable_simple_2", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_cosine_similarity\", \"arguments\": \"{\\\"vectorA\\\": [0.5, 0.7, 0.2, 0.9, 0.1], \\\"vectorB\\\": [0.4, 0.6, 0.3, 0.8, 0.2]}\"}<|tool_call_end|>"}
 {"id": "executable_simple_3", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_cosine_similarity\", \"arguments\": \"{\\\"vectorA\\\": [0.3, 0.8, 0.1, 0.6, 0.2], \\\"vectorB\\\": [0.5, 0.7, 0.4, 0.9, 0.3]}\"}<|tool_call_end|>"}
 {"id": "executable_simple_4", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_density\", \"arguments\": \"{\\\"mass\\\": 50, \\\"volume\\\": 10}\"}<|tool_call_end|>"}
-{"id": "executable_simple_5", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_density\", \"arguments\": \"{\\\"mass\\\": 120.0, \\\"volume\\\": 30.0}\"}<|tool_call_end|>"}
+{"id": "executable_simple_5", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_density\", \"arguments\": \"{\\\"mass\\\": 120, \\\"volume\\\": 30}\"}<|tool_call_end|>"}
 {"id": "executable_simple_6", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_displacement\", \"arguments\": \"{\\\"initial_velocity\\\": 15, \\\"acceleration\\\": 9.8, \\\"time\\\": 10}\"}<|tool_call_end|>"}
 {"id": "executable_simple_7", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_displacement\", \"arguments\": \"{\\\"initial_velocity\\\": 25, \\\"acceleration\\\": 15, \\\"time\\\": 8}\"}<|tool_call_end|>"}
 {"id": "executable_simple_8", "result": "<|use_tool|><|tool_call_begin|> {\"name\": \"calculate_electrostatic_potential_energy\", \"arguments\": \"{\\\"charge\\\": 5, \\\"voltage\\\": 10}\"}<|tool_call_end|>"}
