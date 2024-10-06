@@ -139,4 +139,14 @@ python analysis/chart.py --score_csv ./score/zhtw/data.csv --out_chart ./score/z
 ```
 ![image](./misc/radar_chart_all.png)
 
-## Contributor and License
+## Citation Information
+
+```
+@software{fc-leaderboard-zhtw,
+  author = {Liang-Chieh Lee and Cheng-Wei Lin and Pei-Chen Ho and Chien-Yu Yu and Yi-Chang Chen and Da-Shan Shiu},
+  title = {Function Calling Leaderboard for ZHTW},
+  month = October,
+  year = 2024,
+  url = {https://github.com/mtkresearch/function-calling-leaderboard-for-zhtw}
+}
+```
